@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "./css/sidebar.css";
+import "./sidebar.css";
 
 export function Sidebar() {
   const adminMail = "admin@gmail.com";

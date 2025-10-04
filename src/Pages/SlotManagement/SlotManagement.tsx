@@ -1,4 +1,4 @@
-import "./css/SlotManagement.css";
+import "./SlotManagement.css";
 import { SlotHeader } from "../../Components/SlotHeader/SlotHeader";
 import { AddSlotModal } from "../../Components/AddSlot/AddSlot";
 import { useState } from "react";
@@ -10,7 +10,7 @@ export function Slots() {
     console.log("Slot Added:", data);
   };
   return (
-    <div className="leftContainer">
+    <div className="rightContainer">
       <SlotHeader />
       <div className="mainContainer">
         Still under Construction

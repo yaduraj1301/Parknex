@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./css/slotHeader.css";
+import "./slotHeader.css";
 
 export function SlotHeader() {
   const [dateTime, setDateTime] = useState(new Date());

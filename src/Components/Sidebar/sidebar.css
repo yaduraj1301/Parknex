@@ -1,5 +1,6 @@
 .sidebar {
-  height: 100vh;        
+  height: 100vh;
+  width: clamp(220px, 25vw, 17%);    
   padding: 18px;      
   background-color: #EFEFEF;
   display: flex;
@@ -63,6 +64,7 @@
   align-items: center;
   padding: 15px 0px 0px 0px; 
   border-top: 1px solid #f0f0f0;
+  margin-bottom: 20px;
 }
 
 .fa-regular {
@@ -101,3 +103,4 @@
   font-size: 14px;
   color: #1976d2;
 }
+
