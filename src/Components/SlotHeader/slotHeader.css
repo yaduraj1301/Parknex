@@ -1,0 +1,56 @@
+.slotHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 0px 18px 18px;
+    align-items: center;
+    border-bottom: 1px solid #ADADAD;
+}
+
+.leftSection h3{
+    font-size: 1.8em;
+}
+
+.leftSection p {
+    font-size: 1rem;
+    color: #4d4d4d;
+    font-weight: 300;
+}
+
+.rightSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.headerDateTime {
+  display: flex;
+  flex-direction: column; /* stack date above time */
+  align-items: flex-end; /* align text to left */
+  text-align: left;
+  gap: 4px;
+  padding-right: 12px;
+  border-right: 1.5px solid #64A2F5;
+}
+
+.headerDate{
+  font-weight: 500;
+}
+
+.headerTime {
+    color: #64A2F5;
+    font-weight: bold;
+    align-self: right;
+}
+
+.notificationIcon i{
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    background-color: #64A2F5;
+    color: #ffffff;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+

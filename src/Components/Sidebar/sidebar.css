@@ -1,0 +1,103 @@
+.sidebar {
+  height: 100vh;        
+  padding: 18px;      
+  background-color: #EFEFEF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05); */
+}
+
+/* Sidebar header */
+.sidebarHeader {
+  margin-bottom: 48px;
+}
+
+.sidebarHeaderTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: #4d4d4d;
+}
+
+.sidebarHeader p {
+  font-size: 14px;
+  color: #4d4d4d;
+  margin: 0;
+}
+
+/* Nav links */
+.navBar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.links {
+  padding: 10px 56px 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #4d4d4d;
+  font-size: 15px;
+  border-radius: 12px; 
+  transition: background 0.2s, color 0.2s;
+  height: 3rem;
+}
+
+.links:hover {
+  background: #f7f9fb;
+  color: #1976d2;
+}
+
+.links.active {
+  background: #64A2F5;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  padding: 15px 0px 0px 0px; 
+  border-top: 1px solid #f0f0f0;
+}
+
+.fa-regular {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ddd;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.footerText {
+  flex: 1;
+}
+
+.footerAdminText {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.footerAdminMail {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+}
+
+.footer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #1976d2;
+}
