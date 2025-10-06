@@ -1,33 +1,33 @@
-export function Dashboard({ setFormData }: any) {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+import { useState } from "react";
+import { MainHeader } from "../../Components/main-header/main-header";
+import "./dashboard.css";
+import { Tabs, type TabItem} from "../../Components/Tabs/Tabs";
+import { DashboardOverview } from "../../Components/DashboardOverview/DashboardOverview";
+import { DashboardSlotLayout } from "../../Components/DashboardSlotLayout/DashbaordSlotLayout";
 
-    const formData = new FormData(e.currentTarget);
-    const newData = {
-        name: formData.get('name'),
-        age: formData.get('age'),
-        address: formData.get('address')
-    }
 
-    
-    setFormData(newData);
-  };
-
+export function Dashboard() {
+  
+  const tabItems:TabItem[] = [
+    { label: "Overview", content: <DashboardOverview /> },
+    { label: "Slot Layout", content: <DashboardSlotLayout /> },
+    ];
+  
+  const [selectedBuilding, setSelectedBuilding] = useState("Athulya, Kochi");
   return (
-    <div>
-      <h2>Child Component</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input name="name" type="text" />
-        <br />
-        <label htmlFor="Age">Age</label>
-        <input name="age" type="number" />
-        <br />
-        <label htmlFor="Address">Address</label>
-        <input name="address" type="text" />
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    
+    <>
+      <MainHeader
+        title="Dashboard"
+        subtitle="Welcome to ParkNeX Dashboard"
+        isDropdownRequired={true}
+        setSelectedBuilding={setSelectedBuilding}
+      />
+      <div className="dashboard-content">
+        <div className="building-name">{selectedBuilding}</div>
+        <Tabs tabs={tabItems}/>
+
+      </div>
+    </>
   );
 }

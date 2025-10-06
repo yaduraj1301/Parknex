@@ -1,7 +1,7 @@
 import "./SlotManagement.css";
-import { SlotHeader } from "../../Components/SlotHeader/SlotHeader";
 import { AddSlotModal } from "../../Components/AddSlot/AddSlot";
 import { useState } from "react";
+import { MainHeader } from "../../Components/main-header/main-header";
 
 export function Slots() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,8 +10,12 @@ export function Slots() {
     console.log("Slot Added:", data);
   };
   return (
-    <div className="rightContainer">
-      <SlotHeader />
+    <div className="leftContainer">
+      <MainHeader
+                title="Management"
+                subtitle="Welcome to ParkNeX Dashboard"
+                isDropdownRequired={false}
+              />
       <div className="mainContainer">
         Still under Construction
         <button onClick={() => setIsOpen(true)}>+ Add Slot</button>

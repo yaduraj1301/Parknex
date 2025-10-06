@@ -1,0 +1,14 @@
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 12px;
+}
+
+.building-name {
+    /* background-color: #efefef; */
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}

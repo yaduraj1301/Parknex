@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./AddSlotModal.css";
 
-interface AddSlotModalProps {
+export interface AddSlotModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (data: SlotFormData) => void;
 }
 
-interface SlotFormData {
+export interface SlotFormData {
   building: string;
   level: string;
   block: string;

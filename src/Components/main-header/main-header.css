@@ -1,0 +1,67 @@
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 12px 12px 12px;
+    align-items: center;
+    border-bottom: 1px solid rgba(160, 160, 160, 0.5);
+    background-color: #ffffff;
+    border-radius: 12px 12px 0px 0px;
+}
+
+.leftSection {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.leftSection .pageTitle{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.leftSection .pageTagline {
+    font-size: 13px;
+    color: #4d4d4d;
+    font-weight: 300;
+}
+
+.rightSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.headerDateTime {
+  display: flex;
+  flex-direction: column; /* stack date above time */
+  align-items: flex-end; /* align text to left */
+  text-align: left;
+  gap: 4px;
+  padding-right: 12px;
+  border-right: 1.5px solid #64A2F5;
+}
+
+.headerDate{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.headerTime {
+    color: #64A2F5;
+    font-weight: 600;
+    align-self: right;
+    font-size: 14px;
+}
+
+.notificationIcon i{
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: #64A2F5;
+    color: #ffffff;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+

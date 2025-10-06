@@ -2,12 +2,33 @@
   display: flex;
   min-height: 100vh;
 }
-
+body{
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
 .main-content {
   /* margin-left: 290px; */
   flex: 1;
   background-color: #EFEFEF;
-  padding: 15px 14px;
+  padding: 10px 12px;
 }
 
+.main-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: start;
+    background-color: white;
+    height: 100%;
+    border-radius: 12px;
 
+}
+
+.padded-container {
+    padding: 16px;
+    padding-top: 6px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+    height: 100%;
+}

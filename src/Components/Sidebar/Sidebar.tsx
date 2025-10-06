@@ -11,9 +11,20 @@ export function Sidebar() {
             <h4 className="sidebarHeaderTitle">ParkNeX</h4>
             <p>Parking Management</p>
           </div>
+
           <nav className="navBar">
             <NavLink to="/" className="links">
-              <i className="fas fa-tachometer-alt"></i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M13.5 9V4H20v5zM4 12V4h6.5v8zm9.5 8v-8H20v8zM4 20v-5h6.5v5z"
+                />
+              </svg>
               Dashboard
             </NavLink>
             <NavLink
@@ -63,6 +74,7 @@ export function Sidebar() {
             </NavLink>
           </nav>
         </div>
+
         <div className="footer">
           <i className="fa-regular fa-user"></i>
           <div className="footerText">
@@ -70,7 +82,9 @@ export function Sidebar() {
             <p className="footerAdminMail">{adminMail}</p>
           </div>
           <div>
-            <button onClick={() => alert("Logging out!")}><i className="fa-solid fa-right-from-bracket"></i></button>
+            <button onClick={() => alert("Logging out!")}>
+              <i className="fa-solid fa-right-from-bracket"></i>
+            </button>
           </div>
         </div>
       </div>

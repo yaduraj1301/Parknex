@@ -9,7 +9,11 @@ export function Layout() {
 
       {/* Main content area */}
       <div className="main-content">
-        <Outlet /> {/* Nested routes render here */}
+        <div className="main-container">
+          <div className="padded-container">
+            <Outlet /> {/* Nested routes render here */}
+          </div>
+        </div>
       </div>
     </div>
   );
