@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import "./AddSlotModal.css";
 
-export interface AddSlotModalProps {
+interface AddSlotModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (data: SlotFormData) => void;
 }
 
-export interface SlotFormData {
+interface SlotFormData {
   building: string;
   level: string;
   block: string;
   prefix: string;
   slotNumber: string;
   status: string;
-  isSpecial: string;
+  isSpecial: boolean;
   notes: string;
 }
 
@@ -25,20 +25,28 @@ export const AddSlotModal: React.FC<AddSlotModalProps> = ({
 }) => {
   const [formData, setFormData] = useState<SlotFormData>({
     building: "",
-    level: "",
+    level: "Level 0",
     block: "",
     prefix: "Kat-A",
     slotNumber: "",
     status: "Available",
-    isSpecial: "No",
+    isSpecial: false,
     notes: "",
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+
+    if (name === "isSpecial") {
+      // Convert "Yes"/"No" → boolean
+      setFormData({ ...formData, isSpecial: value === "Yes" });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -74,21 +82,24 @@ export const AddSlotModal: React.FC<AddSlotModalProps> = ({
               <option value="">Select</option>
               <option value="Athulya, Kochi">Athulya, Kochi</option>
               <option value="Gayatri, Trivandrum">Gayatri, Trivandrum</option>
-              <option value="Thejaswini, Trivandrum">Thejaswini, Trivandrum</option>
+              <option value="Thejaswini, Trivandrum">
+                Thejaswini, Trivandrum
+              </option>
             </select>
           </div>
 
           {/* Level & Block */}
           <div className="form-row">
             <div className="form-group">
-              <label>Level</label>
-              <input
-                type="text"
+              <label>Select Level</label>
+              <select
                 name="level"
-                placeholder="0, 1..."
                 value={formData.level}
                 onChange={handleChange}
-              />
+              >
+                <option value="Level 0">Level 0</option>
+                <option value="Level 1">Level 1</option>
+              </select>
             </div>
             <div className="form-group">
               <label>Block name</label>
@@ -97,7 +108,6 @@ export const AddSlotModal: React.FC<AddSlotModalProps> = ({
                 value={formData.block}
                 onChange={handleChange}
               >
-                <option value="">Select Block</option>
                 <option value="Block A">Block A</option>
                 <option value="Block B">Block B</option>
               </select>
@@ -112,7 +122,7 @@ export const AddSlotModal: React.FC<AddSlotModalProps> = ({
                 type="text"
                 name="prefix"
                 value={formData.prefix}
-                readOnly
+                onChange={handleChange} 
               />
             </div>
             <div className="form-group">
@@ -147,25 +157,27 @@ export const AddSlotModal: React.FC<AddSlotModalProps> = ({
               <label>Is Special</label>
               <select
                 name="isSpecial"
-                value={formData.isSpecial}
+                value={formData.isSpecial ? "Yes" : "No"}
                 onChange={handleChange}
               >
-                <option>No</option>
-                <option>Yes</option>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
               </select>
             </div>
           </div>
 
-          {/* Notes */}
-          <div className="form-group">
-            <label>Notes</label>
-            <textarea
-              name="notes"
-              value={formData.notes}
-              onChange={handleChange}
-              placeholder="Pillar, Corner, EV Slot, Handicapped Slot"
-            />
-          </div>
+          {/* Notes — only visible if isSpecial = true */}
+          {formData.isSpecial && (
+            <div className="form-group">
+              <label>Notes</label>
+              <textarea
+                name="notes"
+                value={formData.notes}
+                onChange={handleChange}
+                placeholder="Pillar, Corner, EV Slot, Handicapped Slot"
+              />
+            </div>
+          )}
 
           {/* Buttons */}
           <div className="modal-actions">

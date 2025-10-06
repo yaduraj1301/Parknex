@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout } from "./Layouts/Layout";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
-import { Slots } from "./Pages/SlotManagement/SlotManagement";
+import { Slots } from "./Pages/Management/SlotManagement";
 
 function App() {
   return (
