@@ -5,8 +5,13 @@ type HeaderProps = {
   title: string;
   subtitle: string;
   isDropdownRequired: boolean;
+  setSelectedBuilding?: React.Dispatch<React.SetStateAction<string>>;
 };
-export function MainHeader({title, subtitle, isDropdownRequired}: HeaderProps) {
+export function MainHeader({title, subtitle, isDropdownRequired,setSelectedBuilding}: HeaderProps) {
+
+  function handleDropdownChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setSelectedBuilding?.(event.target.value);
+  }
   const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -30,10 +35,10 @@ export function MainHeader({title, subtitle, isDropdownRequired}: HeaderProps) {
         {isDropdownRequired && (
           <div className="headerDropdown">
             {/* Minimal dropdown placeholder - replace with real component if needed */}
-            <select aria-label="header-dropdown">
-              <option value="option1">Athulya, Kochi</option>
-              <option value="option2">Thejaswini, Trivandrum</option>
-              <option value="option2">Gayatri, Trivandrum</option>
+            <select aria-label="header-dropdown" onChange={handleDropdownChange}>
+              <option value="Athulya, Kochi">Athulya, Kochi</option>
+              <option value="Thejaswini, Trivandrum">Thejaswini, Trivandrum</option>
+              <option value="Gayatri, Trivandrum">Gayatri, Trivandrum</option>
             </select>
           </div>
         )}

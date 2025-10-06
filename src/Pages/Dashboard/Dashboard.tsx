@@ -1,29 +1,32 @@
+import { useState } from "react";
 import { MainHeader } from "../../Components/main-header/main-header";
 import "./dashboard.css";
-export function Dashboard({ setFormData }: any) {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+import { Tabs, type TabItem} from "../../Components/Tabs/Tabs";
+import { DashboardOverview } from "../../Components/DashboardOverview/DashboardOverview";
+import { DashboardSlotLayout } from "../../Components/DashboardSlotLayout/DashbaordSlotLayout";
 
-    const formData = new FormData(e.currentTarget);
-    const newData = {
-      name: formData.get("name"),
-      age: formData.get("age"),
-      address: formData.get("address"),
-    };
 
-    setFormData(newData);
-  };
-
+export function Dashboard() {
+  
+  const tabItems:TabItem[] = [
+    { label: "Overview", content: <DashboardOverview /> },
+    { label: "Slot Layout", content: <DashboardSlotLayout /> },
+    ];
+  
+  const [selectedBuilding, setSelectedBuilding] = useState("Athulya, Kochi");
   return (
+    
     <>
       <MainHeader
         title="Dashboard"
         subtitle="Welcome to ParkNeX Dashboard"
         isDropdownRequired={true}
+        setSelectedBuilding={setSelectedBuilding}
       />
-
       <div className="dashboard-content">
-        Main contents of dashboard will be displayed here
+        <div className="building-name">{selectedBuilding}</div>
+        <Tabs tabs={tabItems}/>
+
       </div>
     </>
   );
