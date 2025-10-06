@@ -1,0 +1,9 @@
+.background-container {
+    padding: 28px;
+    background-color: #efefef;
+    height: 100%;
+    border-radius: 12px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
