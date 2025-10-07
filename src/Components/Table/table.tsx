@@ -364,9 +364,9 @@ interface ReusableTableProps {
   data: Record<string, any>[];
   searchPlaceholder?: string;
   rowsPerPage?: number;
-  showAddButton?: boolean; // ✅ new
-  addButtonLabel?: string; // ✅ new
-  onAddClick?: () => void; // ✅ new
+  showAddButton?: boolean;
+  addButtonLabel?: string;
+  onAddClick?: () => void;
 }
 
 export const Table: React.FC<ReusableTableProps> = ({
@@ -386,10 +386,8 @@ export const Table: React.FC<ReusableTableProps> = ({
   const [filterKey, setFilterKey] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Compute unique filter values (using first column that makes sense)
   const filterOptions = ["All", ...new Set(data.map((item) => item.building))];
 
-  // Filter + sort logic
   const filteredData = useMemo(() => {
     let filtered = data;
 
@@ -414,7 +412,6 @@ export const Table: React.FC<ReusableTableProps> = ({
     return filtered;
   }, [data, search, sortKey, sortOrder, filterKey]);
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
   const paginatedData = filteredData.slice(
     (currentPage - 1) * rowsPerPage,
@@ -437,10 +434,15 @@ export const Table: React.FC<ReusableTableProps> = ({
   return (
     <div className="table-container">
       <div className="table-header">
-        <div>
+        <div className="table-title-section">
           <h2>{title}</h2>
-          {description && <p>{description}</p>}
         </div>
+
+        {description && (
+          <div className="table-description">
+            <p>{description}</p>
+          </div>
+        )}
 
         <div className="table-controls">
           <input
@@ -476,7 +478,6 @@ export const Table: React.FC<ReusableTableProps> = ({
             ))}
           </select>
 
-          {/* ✅ Add button */}
           {showAddButton && (
             <button className="add-btn" onClick={onAddClick}>
               {addButtonLabel}
@@ -545,3 +546,4 @@ export const Table: React.FC<ReusableTableProps> = ({
     </div>
   );
 };
+

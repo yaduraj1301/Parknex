@@ -7,7 +7,6 @@ export function EmployeeManagement() {
     { key: "employeeId", label: "EMPLOYEE ID" },
     { key: "name", label: "NAME" },
     { key: "email", label: "EMAIL" },
-    { key: "department", label: "DEPARTMENT" },
     { key: "building", label: "BUILDING" },
     { key: "phone", label: "PHONE" },
     { key: "status", label: "STATUS" },
@@ -17,7 +16,6 @@ export function EmployeeManagement() {
     employeeId: 10020 + i,
     name: "John Doe",
     email: "john@example.com",
-    department: i % 2 === 0 ? "DTS" : "DES",
     building: "Thejaswini, Trivandrum",
     phone: "+1234567890",
     status: "Active",
@@ -32,7 +30,7 @@ export function EmployeeManagement() {
         <div className="employee-table-section">
           <Table
             title="Employee Details"
-            description="View and manage all registered employees"
+            description="View and manage "
             columns={columns}
             data={data}
             searchPlaceholder="Search by name, email, or ID"
