@@ -4,7 +4,7 @@
   width: 100%;
   gap: 16px;
 }
-
+      
 .tab-header {
   display: flex;
   padding: 5px;
@@ -35,16 +35,16 @@
 
 .tab-button.active {
   font-weight: bold;
-  background-color: white;
-  color: #4d4d4d;
+  /* background-color: white;
+  color: #4d4d4d; */
   box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.2);
-  /* background-color: #64a2f5;
-  color: white; */
+  background-color: #64a2f5;
+  color: white;
 }
 
 .tab-content {
   padding: 12px;
-  background: #fafafa;
+  background: #ffffff;
   border-radius: 8px;
   min-height: 200px;
 }

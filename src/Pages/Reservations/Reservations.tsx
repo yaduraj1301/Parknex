@@ -12,6 +12,7 @@ export function Reservations() {
         { label: "All Bookings", content: <AllBookings /> },
     ];
 
+    // Entire reservation page depends on this(For both the tabs)
     const [selectedBuilding, setSelectedBuilding] = useState("Athulya, Kochi");
 
     return(<>
@@ -23,7 +24,6 @@ export function Reservations() {
         />
         <br></br>
         <div className="reservations-content">
-            {/* <div className="building-name">{selectedBuilding}</div> */}
             <Tabs tabs={tabItems} />
         </div>
     </>)
