@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Tabs.css";
+import "./tabs.css";
 
 export interface TabItem {
   label: string;

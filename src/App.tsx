@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout } from "./Layouts/Layout";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { Slots } from "./Pages/SlotManagement/SlotManagement";
+import { Settings } from "./Pages/Settings/Settings"; 
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="records" element={<Slots />} />
           <Route path="management" element={<Slots />} />
           <Route path="analysis" element={<Slots />} />
-          <Route path="settings" element={<Slots />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </Router>
