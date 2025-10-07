@@ -1,0 +1,21 @@
+.dashboard-overview {
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+   max-height: 68vh;
+  -ms-overflow-style: none;
+  overflow-y: auto;
+
+ }
+
+
+ .stats-card-container {
+   display: flex;
+   gap: 12px;
+ }
+
+ @media (max-width: 768px) {
+   .stats-cards {
+     flex-direction: column;
+   }
+ }

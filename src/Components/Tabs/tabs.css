@@ -43,8 +43,8 @@
 }
 
 .tab-content {
-  padding: 12px;
-  background: #fafafa;
+  /* padding: 12px; */
   border-radius: 8px;
   min-height: 200px;
+  overflow-y: auto;
 }
