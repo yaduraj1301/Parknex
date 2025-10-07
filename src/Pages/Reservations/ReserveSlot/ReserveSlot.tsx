@@ -1,50 +1,63 @@
 import { useState } from 'react';
 import { DateRangePicker } from '../../../Components/DateRangePicker/DateRangePicker';
+// BUG FIX: Correct icon name from TbPillar to TbPill
+import { TbPill, TbCornerUpRight } from "react-icons/tb"; 
 import "./ReserveSlot.css";
 
 export function ReserveSlot() {
     // This state holds the array of selected dates
     const [selectedDates, setSelectedDates] = useState<Date[]>([]);
 
-    // This function handles selecting and de-selecting dates
     const handleDateSelect = (date: Date) => {
-        // Check if the date is already selected
         const isAlreadySelected = selectedDates.some(
             selectedDate => selectedDate.getTime() === date.getTime()
         );
 
         if (isAlreadySelected) {
-            // If it is, remove it (de-select)
             setSelectedDates(prevDates =>
                 prevDates.filter(d => d.getTime() !== date.getTime())
             );
         } else {
-            // If it's not, add it to the array (select)
             setSelectedDates(prevDates => [...prevDates, date]);
         }
     };
 
     return (
-        <div className="reserve-slot-container">
-            <DateRangePicker 
+        <div className='reserve-slot-container'>
+            <DateRangePicker
                 selectedDates={selectedDates}
                 onDateSelect={handleDateSelect}
             />
 
-            {/* We will add the slot selection UI here next */}
-            <div className="slot-selection-placeholder">
-                <p>Slot selection will go here.</p>
-                {selectedDates.length > 0 && (
-                    <div>
-                        <p><strong>Dates Selected:</strong></p>
-                        <ul>
-                            {selectedDates
-                                .sort((a, b) => a.getTime() - b.getTime())
-                                .map(d => <li key={d.toISOString()}>{d.toLocaleDateString()}</li>)
-                            }
-                        </ul>
+            <br></br>
+            
+            <div className="slot-selection-container">
+                <div className="slot-selection-header">
+                    <h4>Select slots to book</h4>
+                    <div className="slot-legend">
+                        <div className="legend-item">
+                            {/* BUG FIX: Use the correct component name */}
+                            <TbPill className="legend-icon" /> Pillar
+                        </div>
+                        <div className="legend-item">
+                            <TbCornerUpRight className="legend-icon" /> Corner
+                        </div>
+                        <div className="legend-item">
+                            <span className="legend-color-dot" style={{ backgroundColor: '#a3e635' }}></span> Available
+                        </div>
+                        <div className="legend-item">
+                            <span className="legend-color-dot" style={{ backgroundColor: '#d1d5db' }}></span> Unavailable
+                        </div>
+                        <div className="legend-item">
+                            <span className="legend-color-dot" style={{ backgroundColor: '#3b82f6' }}></span> Selected
+                        </div>
                     </div>
-                )}
+                </div>
+
+                {/* This is where the actual slot visualizer component will go later */}
+                <div className="slot-grid-placeholder">
+                    {/* Slot component will be imported here */}
+                </div>
             </div>
         </div>
     );
