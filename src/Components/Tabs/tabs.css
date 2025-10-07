@@ -10,7 +10,7 @@
   display: flex;
   position: relative;
   padding: 5px;
-  gap: 4px;
+  gap: 8px;
   background-color: #a0a0a020;
   border-radius: 6px;
   overflow: hidden;
@@ -45,7 +45,7 @@
   border-radius: 6px;
   min-width: 180px;
   font-size: 14px;
-  line-height: 1.5;
+  /* line-height: 1.5; */
   font-variation-settings: "wght" 400;
   transition: color 0.3s ease;
   z-index: 1; /* ensures text stays above highlight */
@@ -53,12 +53,14 @@
 
 .tab-button:hover {
   color: #64a2f5;
+  background-color: #64a2f520;
 }
 
 .tab-button.active {
   font-weight: 600;
   font-variation-settings: "wght" 600;
   color: #4d4d4d;
+  background-color: white;
 }
 
 /* Morph-in effect for tab content */
