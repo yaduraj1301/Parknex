@@ -3,39 +3,19 @@
   flex-direction: column;
   width: 100%;
   gap: 16px;
-  position: relative;
 }
 
 .tab-header {
   display: flex;
-  position: relative;
   padding: 5px;
-  gap: 8px;
+  gap: 4px;
+  /* border: 1px solid rgba(160, 160, 160, 0.5); */
+  background-color: #a0a0a020;
   background-color: #a0a0a020;
   border-radius: 6px;
-  overflow: hidden;
 }
 
-/* The moving highlight background */
-.tab-header::before {
-  content: "";
-  position: absolute;
-  top: 5px;
-  bottom: 5px;
-  left: 5px;
-  width: var(--highlight-width, 180px);
-  transform: translateX(var(--highlight-x, 0px));
-  background: white;
-  border-radius: 6px;
-  box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.2);
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-              width 0.35s ease;
-  z-index: 0;
-}
-
-/* Buttons */
 .tab-button {
-  position: relative;
   background: none;
   border: none;
   padding: 5px 16px;
@@ -45,41 +25,23 @@
   border-radius: 6px;
   min-width: 180px;
   font-size: 14px;
-  /* line-height: 1.5; */
+  transition: all 0.25s ease-in-out;
   font-variation-settings: "wght" 400;
-  transition: color 0.3s ease;
-  z-index: 1; /* ensures text stays above highlight */
 }
 
 .tab-button:hover {
   color: #64a2f5;
-  background-color: #64a2f520;
 }
 
 .tab-button.active {
   font-weight: 600;
   font-variation-settings: "wght" 600;
-  color: #4d4d4d;
   background-color: white;
+  color: #4d4d4d;
 }
 
-/* Morph-in effect for tab content */
 .tab-content {
+  /* background: #fafafa; */
   border-radius: 8px;
   min-height: 200px;
-  position: relative;
-  animation: morphIn 0.35s ease-in-out;
-}
-
-@keyframes morphIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.97) translateY(6px);
-    border-radius: 20px;
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    border-radius: 8px;
-  }
 }
