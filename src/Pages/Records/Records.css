@@ -1,0 +1,17 @@
+.records-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.records-tabs-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.25rem;
+}
+
+.tab-content {
+  margin-top: 1rem;
+}
