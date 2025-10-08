@@ -1,8 +1,10 @@
 .building-stats-card {
     background-color: #fff;
-    padding: 25px;
+    /* Scaled down padding */
+    padding: 1.2em;
+    padding-left: 2em;
     border-radius: 12px;
-    border: 1px solid #eef0f3;
+    border: 1px solid rgba(160, 160, 160, 0.5);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -13,23 +15,26 @@
 
 .stats-card-title {
     margin: 0;
+    /* Scaled down font size */
     font-size: 1rem;
     color: #6c757d;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .stats-card-value {
-    font-size: 2.2rem;
+    /* Scaled down font size */
+    font-size: 1.8rem;
     font-weight: 600;
 }
 
 .stats-card-unit {
-    font-size: 0.9rem;
+    /* Scaled down font size */
+    font-size: 0.75rem;
     color: #888;
     margin: 0;
 }
 
-/* Color classes that will be applied based on the prop */
+/* Color classes remain the same */
 .stats-card-value.black { color: #343a40; }
 .stats-card-value.green { color: #28a745; }
 .stats-card-value.red { color: #dc3545; }

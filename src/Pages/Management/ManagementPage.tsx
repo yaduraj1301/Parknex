@@ -1,40 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MainHeader } from '../../Components/main-header/main-header';
+import { Tabs, type TabItem } from '../../Components/Tabs/Tabs';
 import { Slots } from '../SlotManagement/SlotManagement';
 import BuildingManagement from './BuildingManagement';
+// 👇 1. Import the new CSS file
 import './ManagementPage.css';
 
 const ManagementPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('buildings');
+  const tabItems: TabItem[] = [
+    { label: "Slots", content: <Slots /> },
+    { label: "Buildings", content: <BuildingManagement /> },
+  ];
 
   return (
-    <div className="management-page-container">
-      {/* FIX: Add the missing isDropdownRequired prop and set it to false */}
+    // 👇 2. Add the container div with the new class
+    <div className="management-page">
       <MainHeader
         title="Management"
         subtitle="Manage parking slots, monitor Buildings and Vehicles"
         isDropdownRequired={false}
       />
-
-      <div className="tab-navigation">
-        <button
-          className={`tab-button ${activeTab === 'slots' ? 'active' : ''}`}
-          onClick={() => setActiveTab('slots')}
-        >
-          Slots
-        </button>
-        <button
-          className={`tab-button ${activeTab === 'buildings' ? 'active' : ''}`}
-          onClick={() => setActiveTab('buildings')}
-        >
-          Buildings
-        </button>
-      </div>
-
-      <div className="tab-content">
-        {activeTab === 'slots' && <Slots />}
-        {activeTab === 'buildings' && <BuildingManagement />}
-      </div>
+      <Tabs tabs={tabItems} defaultActive={1} />
     </div>
   );
 };
