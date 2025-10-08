@@ -62,12 +62,14 @@
 .links:hover {
   background: #64a3f52b;
   color: #1976d2;
+  transform: scale(1.02);
 }
 
 .links.active {
   background: #64A2F5;
   color: #fff;
   font-weight: 500;
+  transform: none;
 }
 
 /* Footer */

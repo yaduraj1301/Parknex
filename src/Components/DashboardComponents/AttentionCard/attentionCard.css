@@ -1,0 +1,53 @@
+.attention-card {
+    flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: rgba(220, 20, 60, 0.25);
+  border: 1px solid #dc143c;
+  color: #dc143c;
+  width: 100%;
+  border-radius: 12px;
+  height: 80px;
+}
+.attention-icon {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.left-section {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.attention-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+.attention-content p {
+  font-size: 12px;
+}
+
+.attention-button {
+  padding: 5px;
+  height: fit-content;
+  background-color: rgba(220, 20, 60, 0.25);
+  border: 1px solid #dc143c;
+  color: #dc143c;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.attention-button:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
