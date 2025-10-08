@@ -2,7 +2,7 @@ import "./settings.css";
 import { useState } from "react";
 import { MainHeader } from "../../Components/main-header/main-header";
 import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
-import { DashboardSlotLayout } from "../../Components/DashboardSlotLayout/DashbaordSlotLayout";
+import { DashboardSlotLayout } from "../../Components/DashboardComponents/DashboardSlotLayout/DashbaordSlotLayout";
 import { AdminSettings } from "../../Components/AdminSettings/AdminSettings";
 
 export function Settings() {
@@ -20,8 +20,7 @@ export function Settings() {
         isDropdownRequired={false}
       />
       <div className="dashboard-content">
-        <Tabs tabs={tabItems}/>
-
+        <Tabs tabs={tabItems} />
       </div>
     </div>
   );

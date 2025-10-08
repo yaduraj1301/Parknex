@@ -2,7 +2,7 @@ import React from "react";
 import { MainHeader } from "../../Components/main-header/main-header";
 import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
 import { BookingHistory } from "./BookingHistory";
-import { DashboardOverview } from "../../Components/DashboardOverview/DashboardOverview";
+import { DashboardOverview } from "../../Components/DashboardComponents/DashboardOverview/DashboardOverview";
 
 // import { PendingVerification } from "./PendingVerification";
 // import { EmployeeManagement } from "./EmployeeManagement";
