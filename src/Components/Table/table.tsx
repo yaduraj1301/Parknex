@@ -16,6 +16,7 @@ interface ReusableTableProps {
   showAddButton?: boolean;
   addButtonLabel?: string;
   onAddClick?: () => void;
+  onRowClick?: (row: Record<string, any>) => void; // 👈 Added this line
 }
 
 export const Table: React.FC<ReusableTableProps> = ({
@@ -28,6 +29,7 @@ export const Table: React.FC<ReusableTableProps> = ({
   showAddButton = false,
   addButtonLabel = "+ Add",
   onAddClick,
+  onRowClick, // 👈 Added this line
 }) => {
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<string>("");
@@ -158,7 +160,11 @@ export const Table: React.FC<ReusableTableProps> = ({
           <tbody>
             {paginatedData.length ? (
               paginatedData.map((row, index) => (
-                <tr key={index}>
+                <tr
+                  key={index}
+                  onClick={() => onRowClick && onRowClick(row)} // 👈 Added click handler
+                  style={{ cursor: onRowClick ? "pointer" : "default" }}
+                >
                   {columns.map((col) => (
                     <td key={col.key}>{row[col.key]}</td>
                   ))}
