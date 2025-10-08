@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Table } from "../Table/table";
 import "./AdminSettings.css";
 import { Pencil, Trash2 } from "lucide-react";
+import { AdminPopup } from "../AdminPopup/AdminPopup"; // 👈 create this file (shown below)
 
 export function AdminSettings() {
   const columns = [
     { key: "name", label: "Name" },
+    { key: "empId", label: "Emp Id" },
     { key: "email", label: "Email" },
     { key: "phone", label: "Phone" },
     { key: "role", label: "Role" },
@@ -15,41 +17,68 @@ export function AdminSettings() {
 
   const [admins, setAdmins] = useState([
     {
-      id: 1,
+      empId: "E001",
       name: "Manish Das",
-      email: "john.admin@company.com",
-      phone: "+1234-567",
+      email: "manish.admin@company.com",
+      phone: "+91 9876543210",
       role: "Super Admin",
       building: "All Buildings",
     },
     {
-      id: 2,
+      empId: "E005",
       name: "John Smith",
       email: "john.admin@company.com",
-      phone: "+1234-567",
-      role: "Super Admin",
-      building: "All Buildings",
+      phone: "+91 9998877766",
+      role: "Admin",
+      building: "Thejaswini, Trivandrum",
     },
     {
-      id: 3,
+      empId: "E010",
       name: "John Smith",
       email: "john.admin@company.com",
-      phone: "+1234-567",
-      role: "Super Admin",
-      building: "All Buildings",
+      phone: "+91 9998877766",
+      role: "Admin",
+      building: "Thejaswini, Trivandrum",
     },
     {
-      id: 4,
+      empId: "E015",
       name: "John Smith",
       email: "john.admin@company.com",
-      phone: "+1234-567",
-      role: "Super Admin",
-      building: "All Buildings",
+      phone: "+91 9998877766",
+      role: "Admin",
+      building: "Thejaswini, Trivandrum",
     },
   ]);
 
-  const handleDelete = (id: number) => {
-    setAdmins(admins.filter((a) => a.id !== id));
+  const [showPopup, setShowPopup] = useState(false);
+  const [editData, setEditData] = useState<any>(null);
+
+  const handleAdd = () => {
+    setEditData(null);
+    setShowPopup(true);
+  };
+
+  const handleEdit = (admin: any) => {
+    setEditData(admin);
+    setShowPopup(true);
+  };
+
+  const handleSave = (data: any) => {
+    if (editData) {
+      // Update existing admin
+      setAdmins((prev) =>
+        prev.map((a) => (a.empId === editData.empId ? { ...a, ...data } : a))
+      );
+    } else {
+      // Add new admin
+      const newAdmin = { ...data }; // Remove id generation since empId comes from form
+      setAdmins((prev) => [...prev, newAdmin]);
+    }
+    setShowPopup(false);
+  };
+
+  const handleDelete = (empId: string) => {
+    setAdmins(admins.filter((a) => a.empId !== empId));
   };
 
   // Inject custom Action buttons per row
@@ -57,12 +86,17 @@ export function AdminSettings() {
     ...admin,
     action: (
       <div className="admin-action-buttons">
-        <button className="edit-btn">
+        <button
+          className="edit-btn"
+          onClick={() => handleEdit(admin)}
+          title="Edit"
+        >
           <Pencil size={16} />
         </button>
         <button
           className="delete-btn"
-          onClick={() => handleDelete(admin.id)}
+          onClick={() => handleDelete(admin.empId)}
+          title="Delete"
         >
           <Trash2 size={16} />
         </button>
@@ -77,17 +111,29 @@ export function AdminSettings() {
           <h3>Admin Management</h3>
           <p>Manage administrative accounts and permissions</p>
         </div>
-        <button className="add-admin-btn">+ Add Admin</button>
+        <button className="add-admin-btn" onClick={handleAdd}>
+          + Add Admin
+        </button>
       </div>
 
       <Table
-        title=""
+        title="Admin Management"
+        description="Manage administrative accounts and permissions"
         columns={columns}
         data={dataWithActions}
-        description=""
         searchPlaceholder="Search Admins..."
         rowsPerPage={5}
       />
+
+      {/* Popup Overlay */}
+      {showPopup && (
+        <AdminPopup
+          mode={editData ? "edit" : "add"}
+          existingData={editData || {}}
+          onClose={() => setShowPopup(false)}
+          onSave={handleSave}
+        />
+      )}
     </div>
   );
 }

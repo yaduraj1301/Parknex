@@ -31,7 +31,7 @@
 
 .tab-button:hover {
   color: #64a2f5;
-  background: #64a3f52b;
+  background: #64a2f52b; 
 }
 
 .tab-button.active {

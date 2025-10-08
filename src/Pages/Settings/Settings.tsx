@@ -1,5 +1,4 @@
 import "./settings.css";
-import { useState } from "react";
 import { MainHeader } from "../../Components/main-header/main-header";
 import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
 import { DashboardSlotLayout } from "../../Components/DashboardSlotLayout/DashbaordSlotLayout";
