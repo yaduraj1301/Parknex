@@ -2,8 +2,11 @@
   display: flex;
   flex-direction: row;
   gap: 15px;
+  max-height: 68vh;
 }
-
+.employee-table-section {
+  height: 100%;
+}
 /* Upload + Stats section */
 .employee-top-section {
   display: flex;
