@@ -1,17 +1,14 @@
 import React from "react";
 import { MainHeader } from "../../Components/main-header/main-header";
 import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
+import { EmployeeManagement } from "./EmployeeManagement";
 import { BookingHistory } from "./BookingHistory";
-import { DashboardOverview } from "../../Components/DashboardComponents/DashboardOverview/DashboardOverview";
-
-// import { PendingVerification } from "./PendingVerification";
-// import { EmployeeManagement } from "./EmployeeManagement";
 import "./Records.css";
 
 export function Records() {
-  const tabItems: TabItem[] = [
-    { label: "Employee Management", content: <DashboardOverview /> },
-    { label: "Pending Verification", content: <DashboardOverview /> },
+  const tabItems = [
+    { label: "Employees", content: <EmployeeManagement /> },
+    { label: "Pending Verification", content: <EmployeeManagement /> },
     { label: "Booking History", content: <BookingHistory /> },
   ];
 
@@ -19,7 +16,7 @@ export function Records() {
     <div className="records-page">
       <MainHeader
         title="Records"
-        subtitle="Add and verify employees, manage their parking access, and view complete booking history."
+        subtitle="Manage employees, verify entries, and view booking history."
         isDropdownRequired={true}
       />
       <Tabs tabs={tabItems} />
