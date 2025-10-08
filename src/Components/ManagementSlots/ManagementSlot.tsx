@@ -79,12 +79,6 @@ export function SlotManagement() {
         setStatusFilter={setStatusFilter}
         onClearFilters={handleClearFilters}
       />
-      <div>
-        <h1>Parking Slot Test</h1>
-        <TestEditModal />
-        <PendingVerifications/>
-      </div>
-      
     </div>
   );
 }

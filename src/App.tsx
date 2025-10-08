@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Layout } from "./Layouts/Layout";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { Slots } from "./Pages/Management/Management";
-import { BookingHistory } from "./Pages/Records/BookingHistory"; // 👈 Import here
+// import { BookingHistory } from "./Pages/Records/BookingHistory"; // 👈 Import here
 import { Records } from "./Pages/Records/Records";
 import { Settings } from "./Pages/Settings/Settings"; 
 

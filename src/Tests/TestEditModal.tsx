@@ -17,7 +17,7 @@ export const sampleSlot: ParkingSlot = {
 
 
 export function TestEditModal() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [slot, setSlot] = useState(sampleSlot);
 
   const handleSave = (updatedSlot: typeof sampleSlot) => {
