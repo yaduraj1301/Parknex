@@ -5,6 +5,7 @@ export const AlertsSettings: React.FC = () => {
   const [emailNotifications, setEmailNotifications] = useState(true);
   const [whatsappNotifications, setWhatsappNotifications] = useState(true);
   const [alertThreshold, setAlertThreshold] = useState("5");
+  const [escalateThreshold, setEscalateThreshold] = useState("30");
   const [escalationType, setEscalationType] = useState("minutes");
 
   const handleSave = () => {
@@ -62,44 +63,36 @@ export const AlertsSettings: React.FC = () => {
       {/* Alert Timing */}
       <div className="alert-section">
         <h4>Alert Timing Threshold</h4>
-        <p className="hint">Set threshold for unattended access alerts</p>
 
-        <div className="input-row">
-          <input
-            type="number"
-            min="1"
-            value={alertThreshold}
-            onChange={(e) => setAlertThreshold(e.target.value)}
-          />
-          <span>minutes</span>
+        <div className="alert-threshold">
+          <div className="alert-threshold-item">
+            <h3>Unauthorised Access Alert</h3>
+            <div className="input-row">
+              <input
+                type="number"
+                min="1"
+                value={alertThreshold}
+                onChange={(e) => setAlertThreshold(e.target.value)}
+              />
+              <span id="minute">minutes</span>
+            </div>
+            <p className="hint">Trigger alert to users after unauthorized parking attempt</p>
+          </div>
+          <div className="alert-threshold-item">
+            <h3>Escalation Alert</h3>
+            <div className="input-row">
+              <input
+                type="number"
+                min="1"
+                value={escalateThreshold}
+                onChange={(e) => setEscalateThreshold(e.target.value)}
+              />
+              <span id="minute">minutes</span>
+            </div>
+            <p className="hint">Escalate unresolved issues to admin</p>
+          </div>
         </div>
-      </div>
-
-      {/* Escalation Alert */}
-      <div className="alert-section">
-        <h4>Escalation Alert</h4>
-        <div className="radio-group">
-          <label>
-            <input
-              type="radio"
-              name="escalation"
-              value="minutes"
-              checked={escalationType === "minutes"}
-              onChange={(e) => setEscalationType(e.target.value)}
-            />
-            5 minutes
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="escalation"
-              value="hours"
-              checked={escalationType === "hours"}
-              onChange={(e) => setEscalationType(e.target.value)}
-            />
-            1 hour
-          </label>
-        </div>
+        
       </div>
 
       <div className="actions">
