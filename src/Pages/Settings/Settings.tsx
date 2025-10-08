@@ -3,11 +3,12 @@ import { MainHeader } from "../../Components/main-header/main-header";
 import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
 import { DashboardSlotLayout } from "../../Components/DashboardSlotLayout/DashbaordSlotLayout";
 import { AdminSettings } from "../../Components/AdminSettings/AdminSettings";
+import { AlertsSettings } from "../../Components/AlertSettings/AlertsSettings";
 
 export function Settings() {
   const tabItems: TabItem[] = [
     { label: "Admins", content: <AdminSettings /> },
-    { label: "Alerts", content: <DashboardSlotLayout /> },
+    { label: "Alerts", content: <AlertsSettings /> },
     { label: "Security", content: <DashboardSlotLayout /> },
   ];
 

@@ -106,15 +106,6 @@ export function AdminSettings() {
 
   return (
     <div className="admin-settings">
-      <div className="admin-settings-header">
-        <div>
-          <h3>Admin Management</h3>
-          <p>Manage administrative accounts and permissions</p>
-        </div>
-        <button className="add-admin-btn" onClick={handleAdd}>
-          + Add Admin
-        </button>
-      </div>
 
       <Table
         title="Admin Management"
@@ -122,6 +113,9 @@ export function AdminSettings() {
         columns={columns}
         data={dataWithActions}
         searchPlaceholder="Search Admins..."
+        showAddButton = {true}
+        addButtonLabel="+ Add Admin"
+        onAddClick={handleAdd}
         rowsPerPage={5}
       />
 
