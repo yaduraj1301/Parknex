@@ -4,11 +4,12 @@ import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
 import { EmployeeManagement } from "./EmployeeManagement";
 import { BookingHistory } from "./BookingHistory";
 import "./Records.css";
+import { PendingVerifications } from "../PendingVerifications/PendingVerifications";
 
 export function Records() {
   const tabItems = [
     { label: "Employees", content: <EmployeeManagement /> },
-    { label: "Pending Verification", content: <EmployeeManagement /> },
+    { label: "Pending Verification", content: <PendingVerifications /> },
     { label: "Booking History", content: <BookingHistory /> },
   ];
 

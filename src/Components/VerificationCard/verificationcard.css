@@ -1,0 +1,64 @@
+.verification-card {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card-left {
+  width: 80px;
+  height: 80px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #6b7280;
+  margin-right: 16px;
+}
+
+.card-center {
+  flex: 1;
+}
+
+.name {
+  font-weight: 700;
+  color: #111827;
+}
+
+.card-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+button.approve {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+button.reject {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+button.approved {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: default;
+}
