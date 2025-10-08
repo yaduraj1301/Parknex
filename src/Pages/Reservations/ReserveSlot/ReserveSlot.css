@@ -1,10 +1,6 @@
 .reserve-slot-container {
     max-height: 68vh;
     overflow-y: auto;
-    margin: -1rem; 
-    padding: 1rem;
-    padding-left: 8px;
-    padding-top: 4px;
 
     /* Add position: relative to contain the pseudo-element */
     position: relative;
@@ -30,11 +26,15 @@
     margin-top: 1rem;
 }
 
+/* ... keep all your other styles ... */
+
 .slot-selection-header {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap; /* Allows title and legend to wrap */
+    justify-content: space-between; /* This is okay to keep now */
     align-items: center;
-    margin-bottom: 1.5rem; /* Space between header and the future slot grid */
+    gap: 1rem 2rem; /* 1rem vertical gap, 2rem horizontal gap */
+    margin-bottom: 1.5rem;
 }
 
 .slot-selection-header h4 {
@@ -46,8 +46,11 @@
 .slot-legend {
     display: flex;
     align-items: center;
-    gap: 1.25rem; /* Space between legend items */
+    flex-wrap: wrap; /* THIS IS THE KEY FIX: Allows legend items to wrap */
+    gap: 0.5rem 1.25rem; /* 0.5rem vertical gap, 1.25rem horizontal gap */
 }
+
+/* ... the rest of your styles (.legend-item, etc.) remain the same ... */
 
 .legend-item {
     display: flex;
