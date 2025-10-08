@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import "./addmultipleslots.css";
 
+interface Range {
+  id: number;
+  start: number;
+  end: number;
+}
+
 interface BlockData {
   id: number;
   blockName: string;
-  start: number;
-  end: number;
+  ranges: Range[];
 }
 
 interface BulkAddSlotModalProps {
   isOpen: boolean;
   onClose: () => void;
-  building: string; // preset building value
+  building: string;
 }
 
 export const AddMultipleSlots: React.FC<BulkAddSlotModalProps> = ({
@@ -26,45 +31,98 @@ export const AddMultipleSlots: React.FC<BulkAddSlotModalProps> = ({
   const addBlock = () => {
     setBlocks([
       ...blocks,
-      { id: Date.now(), blockName: "", start: 0, end: 0 },
+      {
+        id: Date.now(),
+        blockName: "",
+        ranges: [{ id: Date.now(), start: 0, end: 0 }],
+      },
     ]);
   };
 
-  const updateBlock = (id: number, key: keyof BlockData, value: any) => {
+  const addRange = (blockId: number) => {
+    setBlocks((prev) =>
+      prev.map((b) =>
+        b.id === blockId
+          ? {
+              ...b,
+              ranges: [...b.ranges, { id: Date.now(), start: 0, end: 0 }],
+            }
+          : b
+      )
+    );
+  };
+
+  const removeRange = (blockId: number, rangeId: number) => {
+    setBlocks((prev) =>
+      prev.map((b) =>
+        b.id === blockId
+          ? { ...b, ranges: b.ranges.filter((r) => r.id !== rangeId) }
+          : b
+      )
+    );
+  };
+
+  const updateBlockName = (id: number, name: string) => {
+    setBlocks((prev) =>
+      prev.map((b) => (b.id === id ? { ...b, blockName: name } : b))
+    );
+  };
+
+  const updateRange = (
+    blockId: number,
+    rangeId: number,
+    key: keyof Range,
+    value: number
+  ) => {
     const updated = blocks.map((block) =>
-      block.id === id ? { ...block, [key]: value } : block
+      block.id === blockId
+        ? {
+            ...block,
+            ranges: block.ranges.map((r) =>
+              r.id === rangeId ? { ...r, [key]: value } : r
+            ),
+          }
+        : block
     );
     setBlocks(updated);
-    const total = updated.reduce(
-      (sum, b) => sum + (b.end > b.start ? b.end - b.start + 1 : 0),
+    recalcTotal(updated);
+  };
+
+  const recalcTotal = (data: BlockData[]) => {
+    const total = data.reduce(
+      (sum, b) =>
+        sum +
+        b.ranges.reduce(
+          (rSum, r) => rSum + (r.end > r.start ? r.end - r.start + 1 : 0),
+          0
+        ),
       0
     );
     setTotalSlots(total);
   };
 
   const removeBlock = (id: number) => {
-    setBlocks(blocks.filter((b) => b.id !== id));
+    const updated = blocks.filter((b) => b.id !== id);
+    setBlocks(updated);
+    recalcTotal(updated);
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-container">
-        <h3>+ Bulk Add Slots</h3>
-        <p className="warning-text">
-          ⚠️ All parking slots will be initially available
-        </p>
-
-        <div className="modal-content">
+    <div className="multiple-modal-overlay">
+      <div className="multiple-modal-container">
+        <div className="multiple-header">
+          <h3>+ Bulk Add Slots</h3>
+          <p className="warning-text">
+            ⚠️ All parking slots will be initially available
+          </p>
+        </div>
+        <div className="multiple-modal-content">
           {/* Left Section */}
-          <div className="left-section">
+          <div className="multiple-left-section">
             <label>Building</label>
-            <input
-              type="text"
-              value={building}
-              onChange={(e) => console.log("Building changed", e.target.value)} // editable if needed
-            />
+            <input type="text" value={building} readOnly />
 
             <label>Level</label>
             <input
@@ -74,51 +132,75 @@ export const AddMultipleSlots: React.FC<BulkAddSlotModalProps> = ({
               placeholder="e.g. G1, L2"
             />
 
-            <button className="add-block-btn" onClick={addBlock}>
+            <button className="multiple-add-block-btn" onClick={addBlock}>
               + Add Block
             </button>
 
             {blocks.map((block) => (
-              <div key={block.id} className="block-section">
-                <div className="block-header">
-                  <strong>Block</strong>
-                  <button onClick={() => removeBlock(block.id)}>❌</button>
+              <div key={block.id} className="multiple-block-section">
+                <div className="multiple-block-header">
+                  <strong>{block.blockName || "New Block"}</strong>
+                  <button onClick={() => removeBlock(block.id)}><i className="fa-solid fa-xmark"></i></button>
                 </div>
-                <div className="block-fields">
-                  <label>Block Name</label>
-                  <input
-                    type="text"
-                    value={block.blockName}
-                    onChange={(e) =>
-                      updateBlock(block.id, "blockName", e.target.value)
-                    }
-                    placeholder="e.g. Block A"
-                  />
 
-                  <div className="slot-range">
+                <label>Block Name</label>
+                <input
+                  type="text"
+                  value={block.blockName}
+                  onChange={(e) => updateBlockName(block.id, e.target.value)}
+                  placeholder="e.g. Block A"
+                />
+
+                {block.ranges.map((range) => (
+                  <div key={range.id} className="multiple-slot-range">
                     <label>Start</label>
                     <input
                       type="number"
-                      value={block.start}
+                      value={range.start}
                       onChange={(e) =>
-                        updateBlock(block.id, "start", Number(e.target.value))
+                        updateRange(
+                          block.id,
+                          range.id,
+                          "start",
+                          Number(e.target.value)
+                        )
                       }
                     />
 
                     <label>End</label>
                     <input
                       type="number"
-                      value={block.end}
+                      value={range.end}
                       onChange={(e) =>
-                        updateBlock(block.id, "end", Number(e.target.value))
+                        updateRange(
+                          block.id,
+                          range.id,
+                          "end",
+                          Number(e.target.value)
+                        )
                       }
                     />
+
+                    <button
+                      className="multiple-range-btn add"
+                      onClick={() => addRange(block.id)}
+                    >
+                      <i className="fa-solid fa-plus"></i>
+                    </button>
+                    {block.ranges.length > 1 && (
+                      <button
+                        className="multiple-range-btn delete"
+                        onClick={() => removeRange(block.id, range.id)}
+                      >
+                        <i className="fa-solid fa-xmark"></i>
+                      </button>
+                    )}
                   </div>
-                </div>
+                ))}
               </div>
             ))}
 
-            <div className="button-group">
+            <div className="multiple-button-group">
               <button className="cancel" onClick={onClose}>
                 Cancel
               </button>
@@ -126,20 +208,23 @@ export const AddMultipleSlots: React.FC<BulkAddSlotModalProps> = ({
             </div>
           </div>
 
-          {/* Right Section (Preview) */}
           <div className="preview-section">
             <h4>Total Slots: {totalSlots}</h4>
             <div className="slots-preview">
-              {blocks.flatMap((b) =>
-                Array.from(
-                  { length: b.end - b.start + 1 },
-                  (_, i) => `${b.blockName}-${b.start + i}`
+              {blocks
+                .flatMap((b) =>
+                  b.ranges.flatMap((r) =>
+                    Array.from(
+                      { length: r.end - r.start + 1 },
+                      (_, i) => `${b.blockName}-${r.start + i}`
+                    )
+                  )
                 )
-              ).map((slot) => (
-                <span key={slot} className="slot-chip">
-                  {slot}
-                </span>
-              ))}
+                .map((slot) => (
+                  <span key={slot} className="slot-chip">
+                    {slot}
+                  </span>
+                ))}
             </div>
           </div>
         </div>

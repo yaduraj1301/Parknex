@@ -1,0 +1,33 @@
+import { ParkingSlot, SlotStatus } from "../types/ParkingTypes";
+
+export const generateSpots = (block: string, count: number): ParkingSlot[] => {
+  const statuses: SlotStatus[] = ['free', 'booked', 'reserved', 'unavailable', 'named'];
+  const employees = ['Alice', 'Bob', 'Charlie', 'Diana'];
+  const buildings = ['Athulya, Kochi', 'Thejaswini, Trivandrum', 'Gayatri, Trivandrum'];
+
+  const getPrefix = (building: string, block: string): string => {
+    const map: Record<string, string> = {
+      'Athulya, Kochi': 'KAT',
+      'Thejaswini, Trivandrum': 'TTJ',
+      'Gayatri, Trivandrum': 'TGY',
+    };
+    return `${map[building] || 'BL'}-${block}`;
+  };
+
+  return Array.from({ length: count }, (_, i) => {
+    const building = buildings[Math.floor(Math.random() * buildings.length)];
+    const status = statuses[Math.floor(Math.random() * statuses.length)];
+    const isNamed = status === 'named';
+
+    return {
+      id: `${block}-${i + 1}`,
+      status,
+      block,
+      prefix: getPrefix(building, block),
+      level: '1',
+      building,
+      isSpecial: Math.random() > 0.8,
+      namedFor: isNamed ? employees[Math.floor(Math.random() * employees.length)] : undefined,
+    };
+  });
+};

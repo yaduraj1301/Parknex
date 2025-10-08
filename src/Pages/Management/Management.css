@@ -1,0 +1,12 @@
+/* .mainContainer {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+} */
+.management-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 12px;
+}
