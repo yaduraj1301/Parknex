@@ -42,7 +42,7 @@ export function BookingHistory() {
         columns={columns}
         data={data}
         searchPlaceholder="Enter vehicle no / employee name"
-        rowsPerPage={11}
+        rowsPerPage={10}
       />
     </div>
   );
