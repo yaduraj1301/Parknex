@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Table } from "../Table/table";
-import "./AdminSettings.css";
+import "./adminSettings.css";
 import { Pencil, Trash2 } from "lucide-react";
 import { AdminPopup } from "../AdminPopup/AdminPopup"; // 👈 create this file (shown below)
 
