@@ -4,6 +4,7 @@ import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { Slots } from "./Pages/SlotManagement/SlotManagement";
 import { BookingHistory } from "./Pages/Records/BookingHistory"; // 👈 Import here
 import { Records } from "./Pages/Records/Records";
+import ManagementPage from "./Pages/Management/ManagementPage";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="reservations" element={<Slots />} />
           <Route path="records" element={<Records />} /> {/* 👈 Use here */}
-          <Route path="management" element={<Slots />} />
+          <Route path="management" element={<ManagementPage />} />
           <Route path="analysis" element={<Slots />} />
           <Route path="settings" element={<Slots />} />
         </Route>
