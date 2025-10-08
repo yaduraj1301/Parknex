@@ -2,7 +2,7 @@ import React from 'react';
 // Import IconContext to solve the className issue
 import { MdAdd, MdBusiness, MdPerson, MdEdit, MdDelete } from 'react-icons/md';
 import { IconContext } from 'react-icons'; 
-import StatsCard from '../../Components/StatsCard/StatsCard';
+import BuildingStatsCard from '../../Components/BuildingStatsCard/BuildingStatsCard';
 import './BuildingManagement.css';
 
 // Define the type for a single building
@@ -27,10 +27,10 @@ const BuildingManagement: React.FC = () => {
   return (
     <div className="building-management-container">
       <div className="stats-grid">
-        <StatsCard title="Total Buildings" value="3" unit="Buildings" />
-        <StatsCard title="Available Slots" value="20" unit="Ready for use" />
-        <StatsCard title="Total Slots" value="62" unit="Across all buildings" />
-        <StatsCard title="Occupancy Rate" value="78%" unit="Current Utilization" type="percentage" />
+        <BuildingStatsCard title="Total Buildings" value="3" unit="Buildings" />
+        <BuildingStatsCard title="Available Slots" value="20" unit="Ready for use" />
+        <BuildingStatsCard title="Total Slots" value="62" unit="Across all buildings" />
+        <BuildingStatsCard title="Occupancy Rate" value="78%" unit="Current Utilization" type="percentage" />
       </div>
 
       <div className="building-management-section">

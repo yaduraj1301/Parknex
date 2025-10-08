@@ -1,14 +1,14 @@
 import React from 'react';
-import './StatsCard.css';
+import './BuildingStatsCard.css';
 
-interface StatsCardProps {
+interface BuildingStatsCardProps {
   title: string;
   value: string;
   unit: string;
   type?: 'percentage';
 }
 
-const StatsCard: React.FC<StatsCardProps> = ({ title, value, unit, type }) => {
+const BuildingStatsCard: React.FC<BuildingStatsCardProps> = ({ title, value, unit, type }) => {
   return (
     <div className="stats-card">
       <h4 className="stats-card-title">{title}</h4>
@@ -23,4 +23,4 @@ const StatsCard: React.FC<StatsCardProps> = ({ title, value, unit, type }) => {
   );
 };
 
-export default StatsCard;
+export default BuildingStatsCard;
