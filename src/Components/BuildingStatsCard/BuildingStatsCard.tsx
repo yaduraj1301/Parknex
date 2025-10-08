@@ -1,26 +1,28 @@
 import React from 'react';
 import './BuildingStatsCard.css';
 
+// Define the type for the text color prop
+type ValueColor = 'black' | 'green' | 'red' | 'blue';
+
 interface BuildingStatsCardProps {
   title: string;
-  value: string;
+  value: string | number;
   unit: string;
-  type?: 'percentage';
+  valueColor?: ValueColor;
 }
 
-const BuildingStatsCard: React.FC<BuildingStatsCardProps> = ({ title, value, unit, type }) => {
+export const BuildingStatsCard: React.FC<BuildingStatsCardProps> = ({
+  title,
+  value,
+  unit,
+  valueColor = 'black', // Default color is black
+}) => {
   return (
-    <div className="stats-card">
+    <div className="building-stats-card">
       <h4 className="stats-card-title">{title}</h4>
-      <div className="stats-card-value">{value}</div>
+      {/* The valueColor is used as a CSS class */}
+      <div className={`stats-card-value ${valueColor}`}>{value}</div>
       <p className="stats-card-unit">{unit}</p>
-      {type === 'percentage' && (
-        <div className="stats-card-progress-bar">
-          <div className="progress-fill" style={{ width: value }}></div>
-        </div>
-      )}
     </div>
   );
 };
-
-export default BuildingStatsCard;

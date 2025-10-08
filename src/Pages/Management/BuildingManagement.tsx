@@ -1,11 +1,10 @@
 import React from 'react';
-// Import IconContext to solve the className issue
 import { MdAdd, MdBusiness, MdPerson, MdEdit, MdDelete } from 'react-icons/md';
-import { IconContext } from 'react-icons'; 
-import BuildingStatsCard from '../../Components/BuildingStatsCard/BuildingStatsCard';
+import { IconContext } from 'react-icons';
+// 👇 1. Import the new BuildingStatsCard component
+import { BuildingStatsCard } from '../../Components/BuildingStatsCard/BuildingStatsCard';
 import './BuildingManagement.css';
 
-// Define the type for a single building
 interface Building {
   id: number;
   name: string;
@@ -18,6 +17,11 @@ interface Building {
 }
 
 const BuildingManagement: React.FC = () => {
+  // 👇 2. Define data and logic for the stats cards
+  const totalSlots = 62;
+  const availableSlots = 20;
+  const availableSlotsColor = availableSlots > totalSlots * 0.2 ? 'green' : 'red';
+
   const buildingData: Building[] = [
     { id: 1, name: 'Thejaswani', location: 'Trivandrum', levels: 1, capacity: 28, occupancy: 78, admin: 'Mehtab', adminPhone: '9120122011' },
     { id: 2, name: 'Gayatri', location: 'Trivandrum', levels: 1, capacity: 28, occupancy: 78, admin: 'Mehtab', adminPhone: '9120122011' },
@@ -26,11 +30,12 @@ const BuildingManagement: React.FC = () => {
 
   return (
     <div className="building-management-container">
+      {/* 👇 3. Replace the old stats cards with the new component */}
       <div className="stats-grid">
-        <BuildingStatsCard title="Total Buildings" value="3" unit="Buildings" />
-        <BuildingStatsCard title="Available Slots" value="20" unit="Ready for use" />
-        <BuildingStatsCard title="Total Slots" value="62" unit="Across all buildings" />
-        <BuildingStatsCard title="Occupancy Rate" value="78%" unit="Current Utilization" type="percentage" />
+        <BuildingStatsCard title="Total Buildings" value="3" unit="Buildings" valueColor="black" />
+        <BuildingStatsCard title="Available Slots" value={availableSlots} unit="Ready for use" valueColor={availableSlotsColor} />
+        <BuildingStatsCard title="Total Slots" value={totalSlots} unit="Across all buildings" valueColor="black" />
+        <BuildingStatsCard title="Occupancy Rate" value="78%" unit="Current Utilization" valueColor="blue" />
       </div>
 
       <div className="building-management-section">
@@ -44,7 +49,6 @@ const BuildingManagement: React.FC = () => {
           </button>
         </div>
 
-        {/* Building Table */}
         <div className="building-table-container">
           <table className="building-table">
             <thead>
@@ -63,7 +67,6 @@ const BuildingManagement: React.FC = () => {
                 <tr key={building.id}>
                   <td>
                     <div className="building-name-cell">
-                      {/* FIX: Wrap the icon with IconContext.Provider to apply className */}
                       <IconContext.Provider value={{ className: "building-icon" }}>
                         <MdBusiness />
                       </IconContext.Provider>
@@ -83,7 +86,6 @@ const BuildingManagement: React.FC = () => {
                   </td>
                   <td>
                     <div className="admin-cell">
-                       {/* FIX: Wrap the icon with IconContext.Provider to apply className */}
                        <IconContext.Provider value={{ className: "admin-icon" }}>
                         <MdPerson />
                       </IconContext.Provider>

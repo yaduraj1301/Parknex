@@ -1,5 +1,6 @@
 .building-management-container {
     width: 100%;
+    transform: scale(1);
 }
 
 .stats-grid {
