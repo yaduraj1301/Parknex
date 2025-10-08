@@ -16,24 +16,25 @@ export function StatCard({
      percentage = (currentStatSlots / totalSlots) * 100;
   }
 
-  const cardClass = `stats-card ${title.toLowerCase().replace(/\s+/g, ".")}`;
+  const cardClass = `dashboard-stats-card ${title.toLowerCase().replace(/\s+/g, ".")}`;
 
   return (
     <article className={cardClass}>
       <div className="top-section">
         <div className="card-text-section">
-          <span className="stats-card-title">{title}</span>
+          <span className="dashboard-stats-card-title">{title}</span>
           {currentStatSlots === undefined ? (
-            <p className="stat-number">{totalSlots}</p>
+            <p className="dashboard-stat-number">{totalSlots}</p>
+          
           ) : (
-            <p className="stat-number">
+            <p className="dashboard-stat-number">
               {currentStatSlots}{" "}
-              <span className="stat-total">/ {totalSlots} </span>
+              <span className="dashboard-stat-total">/ {totalSlots} </span>
             </p>
           )}
         </div>
         <div className="icon-section">
-          <i className="fa-solid fa-car-side stats-icon"></i>
+          <i className="fa-solid fa-car-side dashboard-stats-icon"></i>
         </div>
       </div>
       {currentStatSlots !== undefined ? (

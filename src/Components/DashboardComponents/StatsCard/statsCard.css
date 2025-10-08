@@ -1,5 +1,5 @@
-/* Stats Card */
-.stats-card {
+/* dashboard-stats Card */
+.dashboard-stats-card {
     flex: 1;
   background: white;
   border: 1px solid rgba(160, 160, 160, 0.5);
@@ -24,13 +24,13 @@
   gap: 0.5rem;
 }
 
-.stats-card-title {
+.dashboard-stats-card-title {
   font-size: 14px;
   color: #4d4d4d;
   font-weight: 500;
 }
 
-.stat-number {
+.dashboard-stat-number {
   font-size: 18px;
   font-weight: 700;
   color: #4d4d4d;
@@ -38,7 +38,7 @@
   line-height: 1;
 }
 
-.stat-total {
+.dashboard-stat-total {
   font-size: 12px;
   font-weight: 400;
   color: #a0a0a0;
@@ -53,7 +53,7 @@
   justify-content: center;
 }
 
-.stats-icon {
+.dashboard-stats-icon {
   font-size: 1rem;
 }
 
@@ -87,58 +87,58 @@
 }
 
 /* Color variants for different card types */
-.stats-card.total .icon-section {
+.dashboard-stats-card.total .icon-section {
   background-color: #64a2f520;
 }
 
-.stats-card.total .stats-icon {
+.dashboard-stats-card.total .dashboard-stats-icon {
   color: #64a2f5;
 }
 
-.stats-card.available .icon-section {
+.dashboard-stats-card.available .icon-section {
   background-color: #43BF7320;
 }
 
-.stats-card.available .stats-icon {
+.dashboard-stats-card.available .dashboard-stats-icon {
   color: #43BF73;
 }
 
-.stats-card.available .progress-bar-fill {
+.dashboard-stats-card.available .progress-bar-fill {
   background-color: #43BF73;
 }
 
-.stats-card.booked .icon-section {
+.dashboard-stats-card.booked .icon-section {
   background-color: #dc143c20;
 }
 
-.stats-card.booked .stats-icon {
+.dashboard-stats-card.booked .dashboard-stats-icon {
   color: #dc143c;
 }
 
-.stats-card.booked .progress-bar-fill {
+.dashboard-stats-card.booked .progress-bar-fill {
   background-color: #dc143c;
 }
 
-.stats-card.pre-booked .icon-section {
+.dashboard-stats-card.pre-booked .icon-section {
   background-color: #F0995120;
 }
 
-.stats-card.pre-booked .stats-icon {
+.dashboard-stats-card.pre-booked .dashboard-stats-icon {
   color: #F09951;
 }
 
-.stats-card.pre-booked .progress-bar-fill {
+.dashboard-stats-card.pre-booked .progress-bar-fill {
   background-color: #F09951;
 }
 
-.stats-card.named .icon-section {
+.dashboard-stats-card.named .icon-section {
   background-color: #4d4d4d20;
 }
 
-.stats-card.named .stats-icon {
+.dashboard-stats-card.named .dashboard-stats-icon {
   color: #4d4d4d;
 }
 
-.stats-card.named .progress-bar-fill {
+.dashboard-stats-card.named .progress-bar-fill {
   background-color: #4d4d4d;
 }
