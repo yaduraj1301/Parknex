@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { StatCard } from "../StatsCard/StatsCard";
 import "../DashboardOverview/dashboardOverview.css";
 import { WeeklyUsageOverview } from "../WeeklyUsageOverview/WeeklyUsageOverview";
@@ -5,6 +6,21 @@ import { AttentionCard } from "../AttentionCard/AttentionCard";
 import { UpcomingReservations } from "../UpcomingReservation/UpcomingReservation";
 
 export function DashboardOverview() {
+
+  const navigate = useNavigate();
+
+  const handleViewPendingRequests = () =>{
+    navigate ('/records',{
+      state: {activeTab: 'pending-verification'}
+    });
+  }
+
+  const handleViewAllReservations = () => {
+    console.log("View all reservations clicked");
+    // Navigate to reservations page or open modal
+  };
+
+  
   const data = [
     { day: "Sun", value: 10 },
     { day: "Mon", value: 28 },
@@ -63,10 +79,7 @@ export function DashboardOverview() {
     },
   ];
 
-  const handleViewAllReservations = () => {
-    console.log("View all reservations clicked");
-    // Navigate to reservations page or open modal
-  };
+  
 
   return (
     <div className="dashboard-overview">
@@ -92,6 +105,7 @@ export function DashboardOverview() {
             title={"Pending Requests"}
             message={attentionMessage}
             type={"pending-approval"}
+            onButtonClick = {handleViewPendingRequests}
           />
           <div className="upcoming-card-container">
             <UpcomingReservations

@@ -1,18 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./tabs.css";
 
 export interface TabItem {
   label: string;
-  content: React.ReactNode; // what to render inside the tab
+  content: React.ReactNode;
 }
 
 export interface TabsProps {
   tabs: TabItem[];
   defaultActive?: number;
+  activeIndex?: number; // Parent can set initial active tab
 }
 
-export const Tabs: React.FC<TabsProps> = ({ tabs, defaultActive = 0 }) => {
-  const [activeIndex, setActiveIndex] = useState(defaultActive);
+export const Tabs: React.FC<TabsProps> = ({
+  tabs,
+  defaultActive = 0,
+  activeIndex: externalActiveIndex,
+}) => {
+  const [activeIndex, setActiveIndex] = useState(
+    externalActiveIndex ?? defaultActive
+  );
+
+  // Update active index when external activeIndex changes (from navigation)
+  useEffect(() => {
+    if (externalActiveIndex !== undefined) {
+      setActiveIndex(externalActiveIndex);
+    }
+  }, [externalActiveIndex]);
 
   return (
     <div className="tabs-container">

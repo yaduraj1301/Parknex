@@ -4,9 +4,10 @@ interface AttentionCardProps {
   title: string;
   message: string;
   type: "pending-approval" | "reports";
+  onButtonClick: () => void;
 }
 // const icon = <i className="fa fa-warning"></i>;
-export function AttentionCard({ title, message, type }: AttentionCardProps) {
+export function AttentionCard({ title, message, type, onButtonClick}: AttentionCardProps) {
   return (
     <div className={`attention-card ${type}`}>
       <div className="left-section">
@@ -25,7 +26,7 @@ export function AttentionCard({ title, message, type }: AttentionCardProps) {
           </div>
         </div>
       </div>
-      <button className="attention-button">View Detail</button>
+      <button className="attention-button" onClick={onButtonClick}>View Detail</button>
     </div>
   );
 }
