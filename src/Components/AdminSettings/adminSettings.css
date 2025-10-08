@@ -1,0 +1,64 @@
+.admin-settings {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  font-family: "Montserrat", sans-serif;
+}
+
+.admin-settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 36px 36px;
+}
+
+.admin-settings-header h3 {
+  font-size: 18px;
+  color: #273240;
+  font-weight: 600;
+  margin: 0;
+}
+
+.admin-settings-header p {
+  font-size: 13px;
+  color: #737b8b;
+  margin-top: 4px;
+}
+
+.add-admin-btn {
+  background-color: #64A2F5;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.add-admin-btn:hover {
+  background-color: #484fb4;
+}
+
+.admin-action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.edit-btn,
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #737b8b;
+  transition: 0.3s;
+  padding: 4px;
+}
+
+.edit-btn:hover {
+  color: #5a67ba;
+}
+
+.delete-btn:hover {
+  color: #f2383a;
+}

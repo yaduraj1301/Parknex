@@ -1,0 +1,168 @@
+.alerts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: white;
+  padding: 16px 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  border: #a0a0a07c;
+  border-width: 1px;
+  border-style: solid;
+  max-height: 75vh;
+  overflow-y: scroll;
+}
+
+.alerts-container h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #273240;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: #737b8b;
+  margin-bottom: 10px;
+}
+
+.alert-section h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.alert-threshold {
+  padding: 20px 10px;
+  border: 1px solid #a0a0a07c;
+  border-radius: 12px;
+}
+
+.alert-threshold-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alert-threshold-item h3{
+  font-size: 14px;
+}
+
+.alert-threshold-item #minute {
+  font-size: 14px;
+  color: #a0a0a0;
+}
+
+.hint {
+  font-size: 12px;
+  color: #737b8b;
+  margin-bottom: 10px;
+}
+
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 20px 36px 20px 10px;
+  border-radius: 12px;
+  border: 1px solid #a0a0a07c;
+}
+
+.toggle-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #273240;
+}
+
+.toggle-subtext {
+  font-size: 12px;
+  color: #737b8b;
+  margin-top: 4px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: #64a2f5;
+}
+
+input:checked+.slider:before {
+  transform: translateX(18px);
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-row input {
+  width: 80px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.radio-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.save-btn {
+  background: #64a2f5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.save-btn:hover {
+  background: #4a8be0;
+}

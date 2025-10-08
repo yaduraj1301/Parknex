@@ -4,13 +4,14 @@
 }
 body{
   overflow-y: hidden;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 .main-content {
   /* margin-left: 290px; */
   flex: 1;
   background-color: #EFEFEF;
   padding: 10px 12px;
+  max-height: 100vh;
 }
 
 .main-container {
