@@ -1,10 +1,8 @@
 import { SlCalender } from "react-icons/sl";
-// Import the Table component and its Column type
-import { Table, type Column } from "../../../Components/Table/table";
 import "./AllBookings.css";
+import { Table, type Column } from "../../../Components/Table/table";
 
 export function AllBookings() {
-    // Define the columns for the table. The `key` must match the property name in your future data objects.
     const bookingColumns: Column[] = [
         { key: 'bookingId', label: 'Booking Id' },
         { key: 'vehicleNo', label: 'Vehicle No.' },
@@ -14,34 +12,39 @@ export function AllBookings() {
         { key: 'dateTime', label: 'Date & Time' }
     ];
 
-    // For now, the data is an empty array as per your instructions.
-    // Later, this will be fetched from your .NET backend.
-    const bookingsData: any[] = [];
+    // const bookingsData: any[] = [];
+    const bookingsData = Array.from({ length: 20 }, (_, i) => ({
+        bookingId: 10020 + i,
+        vehicleNo: "KL0973A123",
+        client: "John Doe",
+        slotNo: "78",
+        status: "Booked",
+        dateTime: "08-10-2025 9:00 - 17:00"
+    }));
 
     return (
         <div className='all-bookings-page'>
-            {/* The title and filters are now handled by the Table component */}
-
             <div className="bookings-layout">
-                {/* Left Panel for the main table */}
                 <div className="main-bookings-panel">
-                    {/* Render the Table component here, replacing the placeholder */}
-                    <Table
-                        title="All bookings"
-                        columns={bookingColumns}
-                        data={bookingsData}
-                    />
+                    {/* Add a wrapper div here for CSS overrides */}
+                    <div className="table-component-wrapper">
+                        <Table
+                            title="All bookings"
+                            columns={bookingColumns}
+                            data={bookingsData}
+                        />
+                    </div>
                 </div>
 
-                {/* Right Panel for Upcoming Bookings */}
                 <div className="upcoming-bookings-panel">
+                    {/* ... upcoming bookings content ... */}
                     <div className="upcoming-bookings-header">
                         <div className="header-icon-container">
                             <SlCalender />
                         </div>
                         <div className="header-text-container">
                             <h5>Upcoming Bookings</h5>
-                            {/* <p>5 bookings scheduled</p> */}
+                            <p>5 bookings scheduled</p>
                         </div>
                     </div>
                     <div className="upcoming-bookings-content">

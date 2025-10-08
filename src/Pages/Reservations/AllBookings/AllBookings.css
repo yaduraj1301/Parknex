@@ -22,7 +22,7 @@
 }
 
 .upcoming-bookings-panel {
-    flex: 1;
+    flex: 0.8;
     min-width: 0;
     background-color: #f3f4f6;
     border-radius: 12px;
@@ -74,3 +74,58 @@
 .upcoming-bookings-content::-webkit-scrollbar {
     display: none;
 }
+
+/* ... keep your existing styles ... */
+
+/* --- TABLE COMPONENT OVERRIDES --- */
+
+/* Secondary Bug Fix: Add space between header and table */
+.table-component-wrapper .table-header {
+    /* padding-bottom: 7px; */
+    margin-bottom: 16px;
+    /* border-bottom: 1px solid #f3f4f6; */
+    /* align-items: center;  */
+}
+
+.table-component-wrapper .table-controls {
+    padding-top: 13px;
+    /* padding-bottom: 24px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f3f4f6; */
+    /* align-items: center;  */
+}
+
+/* UI Bugs 2 & 3: Fix horizontal scrolling and column widths */
+.table-component-wrapper .table-wrapper {
+    overflow-x: hidden; /* Hide horizontal scroll */
+}
+
+.table-component-wrapper .custom-table {
+    min-width: auto; /* Remove the minimum width */
+    table-layout: fixed; /* Force columns to obey widths */
+}
+
+.table-component-wrapper .custom-table th,
+.table-component-wrapper .custom-table td {
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word;
+}
+
+/* Set specific widths to prevent overflow */
+.table-component-wrapper .custom-table th:nth-child(1),
+.table-component-wrapper .custom-table td:nth-child(1) { width: 15%; } /* Booking ID */
+
+.table-component-wrapper .custom-table th:nth-child(2),
+.table-component-wrapper .custom-table td:nth-child(2) { width: 15%; } /* Vehicle No. */
+
+.table-component-wrapper .custom-table th:nth-child(3),
+.table-component-wrapper .custom-table td:nth-child(3) { width: 25%; } /* Client */
+
+.table-component-wrapper .custom-table th:nth-child(4),
+.table-component-wrapper .custom-table td:nth-child(4) { width: 10%; } /* Slot No. */
+
+.table-component-wrapper .custom-table th:nth-child(5),
+.table-component-wrapper .custom-table td:nth-child(5) { width: 10%; } /* Status */
+
+.table-component-wrapper .custom-table th:nth-child(6),
+.table-component-wrapper .custom-table td:nth-child(6) { width: 25%; } /* Date & Time */
