@@ -1,7 +1,7 @@
 import "./settings.css";
 import { MainHeader } from "../../Components/main-header/main-header";
 import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
-import { DashboardSlotLayout } from "../../Components/DashboardSlotLayout/DashbaordSlotLayout";
+import { DashboardSlotLayout } from "../../Components/DashboardComponents/DashboardSlotLayout/DashbaordSlotLayout";
 import { AdminSettings } from "../../Components/AdminSettings/AdminSettings";
 import { AlertsSettings } from "../../Components/AlertSettings/AlertsSettings";
 
@@ -20,8 +20,7 @@ export function Settings() {
         isDropdownRequired={false}
       />
       <div className="dashboard-content">
-        <Tabs tabs={tabItems}/>
-
+        <Tabs tabs={tabItems} />
       </div>
     </div>
   );
