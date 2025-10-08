@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-
-import "./Tabs.css";
+import "./tabs.css";
 
 export interface TabItem {
   label: string;
@@ -17,7 +16,6 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, defaultActive = 0 }) => {
 
   return (
     <div className="tabs-container">
-        
       <div className="tab-header">
         {tabs.map((tab, index) => (
           <button

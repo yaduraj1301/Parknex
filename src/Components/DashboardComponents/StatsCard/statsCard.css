@@ -1,0 +1,144 @@
+/* dashboard-stats Card */
+.dashboard-stats-card {
+    flex: 1;
+  background: white;
+  border: 1px solid rgba(160, 160, 160, 0.5);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 180px;
+}
+
+/* Top Section */
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dashboard-stats-card-title {
+  font-size: 14px;
+  color: #4d4d4d;
+  font-weight: 500;
+}
+
+.dashboard-stat-number {
+  font-size: 18px;
+  font-weight: 700;
+  color: #4d4d4d;
+  margin: 0;
+  line-height: 1;
+}
+
+.dashboard-stat-total {
+  font-size: 12px;
+  font-weight: 400;
+  color: #a0a0a0;
+}
+
+/* Icon Section */
+.icon-section {
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-stats-icon {
+  font-size: 1rem;
+}
+
+/* Bottom Section */
+.bottom-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 0.5rem;
+  background-color: #e5e7eb;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 0.25rem;
+  transition: width 0.3s ease;
+}
+
+.percentage {
+  font-size: 0.875rem;
+  color: #a0a0a0;
+  font-weight: 500;
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+/* Color variants for different card types */
+.dashboard-stats-card.total .icon-section {
+  background-color: #64a2f520;
+}
+
+.dashboard-stats-card.total .dashboard-stats-icon {
+  color: #64a2f5;
+}
+
+.dashboard-stats-card.available .icon-section {
+  background-color: #43BF7320;
+}
+
+.dashboard-stats-card.available .dashboard-stats-icon {
+  color: #43BF73;
+}
+
+.dashboard-stats-card.available .progress-bar-fill {
+  background-color: #43BF73;
+}
+
+.dashboard-stats-card.booked .icon-section {
+  background-color: #dc143c20;
+}
+
+.dashboard-stats-card.booked .dashboard-stats-icon {
+  color: #dc143c;
+}
+
+.dashboard-stats-card.booked .progress-bar-fill {
+  background-color: #dc143c;
+}
+
+.dashboard-stats-card.pre-booked .icon-section {
+  background-color: #F0995120;
+}
+
+.dashboard-stats-card.pre-booked .dashboard-stats-icon {
+  color: #F09951;
+}
+
+.dashboard-stats-card.pre-booked .progress-bar-fill {
+  background-color: #F09951;
+}
+
+.dashboard-stats-card.named .icon-section {
+  background-color: #4d4d4d20;
+}
+
+.dashboard-stats-card.named .dashboard-stats-icon {
+  color: #4d4d4d;
+}
+
+.dashboard-stats-card.named .progress-bar-fill {
+  background-color: #4d4d4d;
+}

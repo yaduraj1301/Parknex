@@ -2,7 +2,7 @@
   background-color: white;
   padding: 15px 25px;
   margin-bottom: 16px;
-  border: 1px solid #a0a0a0;
+  border: 1px solid #a0a0a080;
   border-radius: 12px;
   margin: 16px 0px;
 }
@@ -51,10 +51,10 @@
 }
 
 .btn-primary {
-  background-color: #3b82f6;
+  background-color: #64A2F5;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #2563eb;
+  background-color: #2b7fec;
 }

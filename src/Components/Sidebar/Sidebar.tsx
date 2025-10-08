@@ -1,4 +1,13 @@
 import { NavLink } from "react-router-dom";
+import {
+  LayoutDashboard,
+  CalendarCheck2,
+  FileText,
+  BarChart3,
+  SlidersHorizontal,
+  ChartPie,
+  MonitorCog,
+} from "lucide-react";
 import "./sidebar.css";
 
 export function Sidebar() {
@@ -14,7 +23,7 @@ export function Sidebar() {
 
           <nav className="navBar">
             <NavLink to="/" className="links">
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
@@ -24,7 +33,8 @@ export function Sidebar() {
                   fill="currentColor"
                   d="M13.5 9V4H20v5zM4 12V4h6.5v8zm9.5 8v-8H20v8zM4 20v-5h6.5v5z"
                 />
-              </svg>
+              </svg> */}
+              <LayoutDashboard width={"20px"} height={"20px"}></LayoutDashboard>
               Dashboard
             </NavLink>
             <NavLink
@@ -33,7 +43,8 @@ export function Sidebar() {
                 isActive ? "links active" : "links"
               }
             >
-              <i className="fas fa-calendar-check"></i>
+              {/* <i className="fas fa-calendar-check"></i> */}
+              <CalendarCheck2 width={"20px"} height={"20px"} />
               Reservations
             </NavLink>
             <NavLink
@@ -42,7 +53,8 @@ export function Sidebar() {
                 isActive ? "links active" : "links"
               }
             >
-              <i className="fas fa-file-alt"></i>
+              {/* <i className="fas fa-file-alt"></i> */}
+              <FileText width={"20px"} height={"20px"}></FileText>
               Records
             </NavLink>
             <NavLink
@@ -51,8 +63,9 @@ export function Sidebar() {
                 isActive ? "links active" : "links"
               }
             >
-              <i className="fas fa-cogs"></i>
-              Management
+              {/* <i className="fas fa-cogs"></i> */}
+              <MonitorCog  width={"20px"} height={"20px"} />
+               Management
             </NavLink>
             <NavLink
               to="/analysis"
@@ -60,7 +73,8 @@ export function Sidebar() {
                 isActive ? "links active" : "links"
               }
             >
-              <i className="fas fa-chart-line"></i>
+              {/* <i className="fas fa-chart-line"></i> */}
+              <ChartPie width={"20px"} height={"20px"} />
               Analysis
             </NavLink>
             <NavLink
@@ -69,7 +83,8 @@ export function Sidebar() {
                 isActive ? "links active" : "links"
               }
             >
-              <i className="fas fa-sliders-h"></i>
+              {/* <i className="fas fa-sliders-h"></i> */}
+              <SlidersHorizontal width={"20px"} height={"20px"} />
               Settings
             </NavLink>
           </nav>

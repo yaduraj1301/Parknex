@@ -4,6 +4,7 @@ import { AddSlotModal } from "../AddSlot/AddSlot";
 import "./managementslots.css";
 import { QuickActions } from "../QuickActions/QuickActions";
 import { TestEditModal } from "../../Tests/TestEditModal";
+import { PendingVerifications } from "../../Pages/PendingVerifications/PendingVerifications";
 
 export function SlotManagement() {
   const [isSingleOpen, setIsSingleOpen] = useState(false);
@@ -81,6 +82,7 @@ export function SlotManagement() {
       <div>
         <h1>Parking Slot Test</h1>
         <TestEditModal />
+        <PendingVerifications/>
       </div>
       
     </div>

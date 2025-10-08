@@ -11,3 +11,9 @@ export interface ParkingSlot {
   notes?: string;
   namedFor?: string;
 }
+
+export const BUILDINGS: Record<string, string> = {
+  'Athulya, Kochi': 'KAT',
+  'Thejaswini, Trivandrum': 'TTJ',
+  'Gayatri, Trivandrum': 'TGY'
+};
