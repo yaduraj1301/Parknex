@@ -7,8 +7,8 @@ import { MainHeader } from "../../Components/main-header/main-header";
 
 export function Reservations() {
     const tabItems: TabItem[] = [
-        { label: "Reservations", content: <ReserveSlot /> },
-        { label: "All Bookings", content: <AllBookings /> },
+        { label: "Reserve Slot", content: <ReserveSlot /> },
+        { label: "All Reservations", content: <AllBookings /> },
     ];
 
     // Entire reservation page depends on this(For both the tabs)
