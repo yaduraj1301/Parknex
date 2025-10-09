@@ -7,12 +7,12 @@ import "./BookingHistory.css";
 
 export function BookingHistory() {
   const columns = [
-    { key: "bookingId", label: "BOOKING ID" },
-    { key: "name", label: "NAME" },
+    { key: "bookingId", label: "BOOKING ID", sortable: true },
+    { key: "name", label: "NAME", sortable: true },
     { key: "vehicleNo", label: "VEHICLE NO" },
     { key: "slotName", label: "SLOT NAME" },
     { key: "building", label: "BUILDING" },
-    { key: "bookingTime", label: "BOOKING TIME" },
+    { key: "bookingTime", label: "BOOKING TIME", sortable: true },
     { key: "checkout", label: "CHECKOUT" },
     { key: "date", label: "DATE" },
   ];

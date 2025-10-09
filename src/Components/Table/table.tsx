@@ -4,6 +4,7 @@ import "./table.css";
 export interface Column {
   key: string;
   label: string;
+  sortable?: boolean;
 }
 
 interface ReusableTableProps {
@@ -16,6 +17,8 @@ interface ReusableTableProps {
   showAddButton?: boolean;
   addButtonLabel?: string;
   onAddClick?: () => void;
+  onRowClick?: (row: Record<string, any>) => void;
+  showFilter?: boolean; // 👈 Added prop
 }
 
 export const Table: React.FC<ReusableTableProps> = ({
@@ -28,6 +31,8 @@ export const Table: React.FC<ReusableTableProps> = ({
   showAddButton = false,
   addButtonLabel = "+ Add",
   onAddClick,
+  onRowClick,
+  showFilter = false, // 👈 Default false
 }) => {
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<string>("");
@@ -40,7 +45,7 @@ export const Table: React.FC<ReusableTableProps> = ({
   const filteredData = useMemo(() => {
     let filtered = data;
 
-    if (filterKey !== "All") {
+    if (showFilter && filterKey !== "All") {
       filtered = filtered.filter((row) => row.building === filterKey);
     }
 
@@ -59,7 +64,7 @@ export const Table: React.FC<ReusableTableProps> = ({
     }
 
     return filtered;
-  }, [data, search, sortKey, sortOrder, filterKey]);
+  }, [data, search, sortKey, sortOrder, filterKey, showFilter]);
 
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
   const paginatedData = filteredData.slice(
@@ -106,26 +111,30 @@ export const Table: React.FC<ReusableTableProps> = ({
 
           <select onChange={(e) => setSortKey(e.target.value)} value={sortKey}>
             <option value="">Sort By</option>
-            {columns.map((col) => (
-              <option key={col.key} value={col.key}>
-                {col.label}
-              </option>
-            ))}
+            {columns
+              .filter((col) => col.sortable)
+              .map((col) => (
+                <option key={col.key} value={col.key}>
+                  {col.label}
+                </option>
+              ))}
           </select>
 
-          <select
-            onChange={(e) => {
-              setFilterKey(e.target.value);
-              setCurrentPage(1);
-            }}
-            value={filterKey}
-          >
-            {filterOptions.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
+          {showFilter && (
+            <select
+              onChange={(e) => {
+                setFilterKey(e.target.value);
+                setCurrentPage(1);
+              }}
+              value={filterKey}
+            >
+              {filterOptions.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
+          )}
 
           {showAddButton && (
             <button className="add-btn" onClick={onAddClick}>
@@ -142,8 +151,9 @@ export const Table: React.FC<ReusableTableProps> = ({
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  onClick={() => handleSort(col.key)}
-                  className={sortKey === col.key ? "active-sort" : ""}
+                  onClick={() => col.sortable && handleSort(col.key)}
+                  className={col.sortable ? "sortable" : ""}
+                  style={{ cursor: col.sortable ? "pointer" : "default" }}
                 >
                   {col.label}
                   {sortKey === col.key && (
@@ -158,7 +168,11 @@ export const Table: React.FC<ReusableTableProps> = ({
           <tbody>
             {paginatedData.length ? (
               paginatedData.map((row, index) => (
-                <tr key={index}>
+                <tr
+                  key={index}
+                  onClick={() => onRowClick && onRowClick(row)}
+                  style={{ cursor: onRowClick ? "pointer" : "default" }}
+                >
                   {columns.map((col) => (
                     <td key={col.key}>{row[col.key]}</td>
                   ))}
