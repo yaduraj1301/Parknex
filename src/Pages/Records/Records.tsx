@@ -20,7 +20,10 @@ export function Records() {
         subtitle="Manage employees, verify entries, and view booking history."
         isDropdownRequired={true}
       />
-      <Tabs tabs={tabItems} />
+
+      <div className="records-content">
+        <Tabs tabs={tabItems} />
+      </div>
     </div>
   );
 }

@@ -2,8 +2,11 @@
   display: flex;
   flex-direction: row;
   gap: 15px;
+  max-height: 68vh;
 }
-
+.employee-table-section {
+  height: 100%;
+}
 /* Upload + Stats section */
 .employee-top-section {
   display: flex;
@@ -15,7 +18,7 @@
 }
 
 .upload-card,
-.stats-card {
+.records-stats-card {
   flex: 1;
   background: #fff;
   border-radius: 14px;
@@ -44,11 +47,11 @@
   background: #eef3ff;
   color: #2563eb;
   border: 1px solid #c7d2fe;
-  padding: 6px 12px;
+  padding: 6px 8px;
   border-radius: 8px;
   font-size: 12px;
   cursor: pointer;
-  width: 100px;
+  width: 30%;
 }
 
 .dropzone {
@@ -71,11 +74,11 @@
 
 .dropzone p {
   font-size: 0.85rem;
-  color: #555;
+  color: #555555a4;
 }
 
 .dropzone span {
-  color: #2563eb;
+  color: #2564ebaf;
   cursor: pointer;
 }
 
@@ -106,26 +109,26 @@
 }
 
 /* Statistics Section */
-.stats-card h3 {
+.records-stats-card h3 {
   font-size: 1rem;
   font-weight: 600;
   gap: 10px;
 }
 
-.stats-card p {
+.records-stats-card p {
   color: #6b7280;
   font-size: 12px;
   gap: 15px;
   margin-bottom: 10px;
 }
 
-.stats-content {
+.records-stats-content {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.stats-content h4 {
+.records-stats-content h4 {
   font-size: 0.9rem;
   gap: 10px;
   color: #444;
@@ -158,4 +161,197 @@
   font-size: 12px;
   cursor: pointer;
   border: none;
+}
+
+.records-stats-card {
+  background: #fff;
+  border: 1px solid #a0a0a081;
+  border-radius: 14px;
+  padding: 18px 24px;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); */
+  width: 100%;
+  max-width: 400px;
+  font-family: "Inter", sans-serif;
+  color: #1f2937;
+}
+
+/* Header */
+.records-stats-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.records-stats-title h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.records-stats-title p {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 2px 0 0 0;
+}
+
+/* Stats Section */
+.records-stats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.records-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.records-stat-row h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1f2937;
+}
+
+.records-stat-row p {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 2px 0 0 0;
+}
+
+.records-stat-value-circle {
+  background: #6b7280;
+  color: #fff;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.records-stat-date {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+/* Divider line */
+.divider {
+  border-bottom: 1px solid #e5e7eb;
+  margin: 4px 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  color: #273240;
+  background: #fff;
+  width: 420px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  /* align-items: left; */
+  /* justify-content: space-between; */
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.status-badge {
+  background: #16a34a;
+  color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+.modal-section {
+  margin-top: 15px;
+}
+
+.modal-section h3 {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.modal-section ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.status-badge {
+  background-color: #e8f7ee;
+  color: #2a8b55;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.modal-section {
+  padding: 15px 0;
+}
+
+.light-divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+.medium {
+  font-weight: 500; /* Medium weight */
+}
+.browse-text {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.browse-text:hover {
+  text-decoration: none;
 }

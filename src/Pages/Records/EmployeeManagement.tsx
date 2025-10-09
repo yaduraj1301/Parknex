@@ -1,4 +1,13 @@
 import React, { useState } from "react";
+import {
+  Users,
+  Car,
+  Phone,
+  Mail,
+  ShieldCheck,
+  Building2,
+  CalendarCheck,
+} from "lucide-react";
 import { Table } from "../../Components/Table/table";
 import "./EmployeeManagement.css";
 
@@ -19,89 +28,193 @@ export function EmployeeManagement() {
     building: "Thejaswini, Trivandrum",
     phone: "+1234567890",
     status: "Active",
+    vehicles: [
+      "KL 08 Q 3738 Maruti 800 White",
+      "KL 08 Q 4738 Honda City Black",
+    ],
+    authorized: "18/03/2019",
+    department: "DES",
   }));
 
   const [file, setFile] = useState<File | null>(null);
+  const [selectedEmployee, setSelectedEmployee] = useState<any>(null);
+
+  const handleRowClick = (rowData: any) => {
+    setSelectedEmployee(rowData);
+  };
+
+  const closeModal = () => {
+    setSelectedEmployee(null);
+  };
 
   return (
     <div className="employee-management">
-      {/* Top Grid: Upload + Stats */}
-      <div>
-        <div className="employee-table-section">
-          <Table
-            title="Employee Details"
-            description="View and manage "
-            columns={columns}
-            data={data}
-            searchPlaceholder="Search by name, email, or ID"
-            rowsPerPage={10}
-            showAddButton={true}
-            addButtonLabel="+ Add Employee"
-            onAddClick={() => console.log("Add employee clicked")}
-          />
-        </div>
+      <div className="employee-table-section">
+        <Table
+          title="Employee Details"
+          description="View and manage"
+          columns={columns}
+          data={data}
+          searchPlaceholder="Search by name, email, or ID"
+          rowsPerPage={10}
+          showAddButton={true}
+          addButtonLabel="+ Add Employee"
+          onAddClick={() => console.log("Add employee clicked")}
+          onRowClick={handleRowClick}
+        />
       </div>
-      <div>
-        <div className="employee-top-section">
-          {/* Upload Section */}
-          <div className="upload-card">
-            <div className="upload-header">
-              <h3>Upload Employee Details</h3>
-              <button className="download-btn">Download Template</button>
-            </div>
 
-            <div
-              className="dropzone"
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => {
-                e.preventDefault();
-                const uploadedFile = e.dataTransfer.files[0];
-                if (uploadedFile) setFile(uploadedFile);
-              }}
-            >
-              {file ? (
-                <p className="uploaded-file">{file.name}</p>
-              ) : (
-                <p>
-                  <strong>Drop file</strong> or <span>Browse</span>
-                  <br />
-                  Format: .csv, .xlsx (max 25 MB)
-                </p>
-              )}
-              <input
-                type="file"
-                accept=".csv, .xlsx"
-                onChange={(e) =>
-                  e.target.files?.[0] && setFile(e.target.files[0])
-                }
-              />
-            </div>
+      <div className="employee-top-section">
+        {/* Upload Section */}
+        <div className="upload-card">
+          <div className="upload-header">
+            <h3>Upload Employee Details</h3>
+            <button className="download-btn">Download Template</button>
+          </div>
 
-            <div className="upload-actions">
-              <button className="cancel-btn">Cancel</button>
-              <button className="done-btn">Done</button>
+          <div
+            className="dropzone"
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={(e) => {
+              e.preventDefault();
+              const uploadedFile = e.dataTransfer.files[0];
+              if (uploadedFile) setFile(uploadedFile);
+            }}
+          >
+            {file ? (
+              <p className="uploaded-file">{file.name}</p>
+            ) : (
+              <p>
+                <strong>Drop file</strong> or{" "}
+                <label htmlFor="file-upload" className="browse-text">
+                  Browse
+                </label>
+                <br />
+                Format: .csv, .xlsx (max 25 MB)
+              </p>
+            )}
+
+            {/* Hidden file input triggered by the label */}
+            <input
+              id="file-upload"
+              type="file"
+              accept=".csv, .xlsx"
+              style={{ display: "none" }}
+              onChange={(e) =>
+                e.target.files?.[0] && setFile(e.target.files[0])
+              }
+            />
+          </div>
+
+          <div className="upload-actions">
+            <button className="cancel-btn">Cancel</button>
+            <button className="done-btn">Done</button>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="records-stats-card">
+          <div className="records-stats-header">
+            <div className="records-stats-title">
+              <Users size={28} className="icon" />
+              <div>
+                <h3>Employee Statistics</h3>
+                <p>Overview of registered employees</p>
+              </div>
             </div>
           </div>
 
-          {/* Statistics Section */}
-          <div className="stats-card">
-            <h3>Employee Statistics</h3>
-            <p>Overview of registered employees in the system</p>
-            <div className="stats-content">
+          <div className="records-stats-section">
+            <div className="records-stat-row">
               <div>
                 <h4>Total Employees</h4>
-                <span className="big-number">1650</span>
+                <p>All registered users</p>
               </div>
+              <div className="records-stat-value-circle">1650</div>
+            </div>
+
+            <hr className="light-divider" />
+
+            <div className="records-stat-row">
               <div>
-                <h4>Last Upload</h4>
-                <p>2024-01-16</p>
+                <h4>Latest Upload</h4>
+                <p>Most recent data entry</p>
               </div>
+              <span className="records-stat-date">2024-01-16</span>
             </div>
           </div>
         </div>
-
-        {/* Table Section */}
       </div>
+
+      {/* Modal */}
+      {selectedEmployee && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div className="profile-section">
+                <img
+                  src="https://alchetron.com/cdn/john-doe-musician-8ffff17f-5d57-4345-bda0-090736fdb6f-resize-750.jpeg"
+                  alt="profile"
+                  className="profile-pic"
+                />
+                <div>
+                  <h2>{selectedEmployee.name}</h2>
+                  <p>ID: {selectedEmployee.employeeId}</p>
+                </div>
+              </div>
+              <span className="status-badge">
+                <ShieldCheck size={16} /> Authorized
+              </span>
+            </div>
+
+            <div className="modal-section">
+              <h3>
+                <Car size={18} /> Vehicle Information
+              </h3>
+              <ul>
+                {selectedEmployee.vehicles.map((v: string, idx: number) => (
+                  <li key={idx}>{v}</li>
+                ))}
+              </ul>
+            </div>
+
+            <hr className="light-divider" />
+
+            <div className="modal-section">
+              <h3>
+                <Phone size={18} /> Contact Information
+              </h3>
+              <p>
+                <span className="medium">Phone:</span> {selectedEmployee.phone}
+              </p>
+              <p>
+                <span className="medium">Email:</span> {selectedEmployee.email}
+              </p>
+            </div>
+
+            <hr className="light-divider" />
+
+            <div className="modal-section">
+              <h3>
+                <CalendarCheck size={18} /> Authorization Details
+              </h3>
+              <p>
+                <span className="medium">Email:</span>{" "}
+                {selectedEmployee.authorized}
+              </p>
+            </div>
+
+            <hr className="light-divider" />
+
+            <div className="modal-section">
+              <h3>
+                <Building2 size={18} /> Location Information
+              </h3>
+              <p>{selectedEmployee.building}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
