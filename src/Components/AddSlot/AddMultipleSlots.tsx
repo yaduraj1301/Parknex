@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./addmultipleslots.css";
 import { EditSlots } from "./EditSlots";
 import type { ParkingSlot, SlotStatus } from "../../Types/ParkingTypes";
-import { SignalZero } from "lucide-react";
 
 interface Range {
   id: number;
@@ -163,8 +162,11 @@ export const AddMultipleSlots: React.FC<BulkAddSlotModalProps> = ({
 
   // Save updated slot from EditSlots modal
   const handleSlotSave = (updatedSlot: ParkingSlot) => {
-    setSlotsMap((prev) => ({ ...prev, [updatedSlot.id]: updatedSlot }));
-    setSelectedSlot(null);
+    setSlotsMap((prev) => {
+      const updated = { ...prev, [updatedSlot.id]: updatedSlot };
+      return updated;
+    });
+    setSelectedSlot(null); // Close modal after saving
   };
 
   if (!isOpen) return null;

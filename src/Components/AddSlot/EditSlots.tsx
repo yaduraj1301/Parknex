@@ -167,15 +167,19 @@ export const EditSlots: React.FC<EditModalProps> = ({
         </div>
 
         {/* Footer */}
+
         <div className="modal-footer">
+          <button type="button" className="btn-cancel" onClick={handleDelete}>
+            Cancel
+          </button>
           <button
             type="button"
-            className="btn-cancel"
-            onClick={handleDelete}
+            className="btn-submit"
+            onClick={() => {
+              // Call the parent handler with the updated slot
+              onSave(formData);
+            }}
           >
-            Mark Unavailable
-          </button>
-          <button type="submit" className="btn-submit">
             Save Changes
           </button>
         </div>
