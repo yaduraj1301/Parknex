@@ -18,7 +18,7 @@
   gap: 15px;
 }
 
-.FunctionButtons button {
+.FunctionButton{
   background-color: #64A2F5;
   color: white;
   border: none;
@@ -30,7 +30,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.FunctionButtons button:hover {
+.FunctionButton:hover {
   background-color: #2b7fec;
   transform: translateY(-2px);
 }

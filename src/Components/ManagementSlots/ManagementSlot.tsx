@@ -32,15 +32,16 @@ export function SlotManagement() {
     <div className="mainContainer">
       <div className="ButtonSection">
         <div className="FunctionButtons">
-          <button onClick={() => setIsSingleOpen(true)}>
+          <button className="FunctionButton" onClick={() => setIsSingleOpen(true)}>
             <i className="fa-solid fa-plus"></i> Add Slot
           </button>
           <AddSlotModal
             isOpen={isSingleOpen}
             onClose={() => setIsSingleOpen(false)}
             onSubmit={handleAddSlot}
+            selectedBuilding={selectedBuilding}
           />
-          <button onClick={() => setIsBulkOpen(true)}>
+          <button className="FunctionButton" onClick={() => setIsBulkOpen(true)}>
             <i className="fa-solid fa-plus"></i> Add Bulk Slot
           </button>
           <AddMultipleSlots
