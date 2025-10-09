@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Check, X } from "lucide-react";
 import { VerificationCard } from "../../Components/VerificationCard/VerificationCard";
 import "./pendingverifications.css";
 
@@ -41,6 +42,15 @@ const sampleEmployees: Employee[] = [
     slot: "C-10",
     submittedAt: "2024-07-18 09:20 AM",
   },
+  {
+    id: 4,
+    name: "Rajav Kumar",
+    email: "rajav.kumar@company.com",
+    empId: "10029",
+    phone: "+1 (555) 654-3210",
+    slot: "D-20",
+    submittedAt: "2024-07-18 10:00 AM",
+  },
 ];
 
 export const PendingVerifications: React.FC = () => {
@@ -70,14 +80,16 @@ export const PendingVerifications: React.FC = () => {
 
   return (
     <div className="verification-container">
-      <div className="header">
+      <div className="verification-header">
         <h3>Pending Verifications</h3>
         <div className="actions">
-          <button className="verify-all" onClick={handleVerifyAll}>
-            ✅ Verify All
+          <button className="verification-btn verify-all" onClick={handleVerifyAll}>
+            <Check width={"16"} height={"16"} />
+            Verify All
           </button>
-          <button className="reject-all" onClick={handleRejectAll}>
-            ❌ Reject All
+          <button className="verification-btn reject-all" onClick={handleRejectAll}>
+            <X width={"16"} height={"16"} />
+            Reject All
           </button>
         </div>
       </div>
@@ -96,13 +108,11 @@ export const PendingVerifications: React.FC = () => {
             />
           ))
         )}
-      </div>
-
-      {/* Summary Section */}
-      <div className="summary">
+        <div className="summary">
         <p>✅ Verified: {verifiedEmployees.length}</p>
         <p>❌ Rejected: {rejectedEmployees.length}</p>
         <p>🕓 Pending: {pendingRequests.length}</p>
+      </div>
       </div>
     </div>
   );

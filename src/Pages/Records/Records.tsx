@@ -1,6 +1,6 @@
 import React from "react";
 import { MainHeader } from "../../Components/main-header/main-header";
-import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
+import { Tabs } from "../../Components/Tabs/Tabs";
 import { EmployeeManagement } from "./EmployeeManagement";
 import { BookingHistory } from "./BookingHistory";
 import "./Records.css";

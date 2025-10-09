@@ -3,7 +3,6 @@ import {
   LayoutDashboard,
   CalendarCheck2,
   FileText,
-  BarChart3,
   SlidersHorizontal,
   ChartPie,
   MonitorCog,

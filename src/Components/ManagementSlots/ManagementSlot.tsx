@@ -3,8 +3,6 @@ import { AddMultipleSlots } from "../AddSlot/AddMultipleSlots";
 import { AddSlotModal } from "../AddSlot/AddSlot";
 import "./managementslots.css";
 import { QuickActions } from "../QuickActions/QuickActions";
-import { TestEditModal } from "../../Tests/TestEditModal";
-import { PendingVerifications } from "../../Pages/PendingVerifications/PendingVerifications";
 
 export function SlotManagement() {
   const [isSingleOpen, setIsSingleOpen] = useState(false);
@@ -14,7 +12,7 @@ export function SlotManagement() {
   const [blockFilter, setBlockFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
 
-  const handleAddSlot = (data: any) => {
+  const handleAddSlot = (data: unknown) => {
     console.log("Slot Added:", data);
   };
 
@@ -79,6 +77,7 @@ export function SlotManagement() {
         setStatusFilter={setStatusFilter}
         onClearFilters={handleClearFilters}
       />
+
     </div>
   );
 }

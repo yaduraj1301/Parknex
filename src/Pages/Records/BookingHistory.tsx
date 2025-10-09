@@ -1,8 +1,4 @@
-import React from "react";
 import { Table } from "../../Components/Table/table";
-import { MainHeader } from "../../Components/main-header/main-header";
-import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
-
 import "./BookingHistory.css";
 
 export function BookingHistory() {
