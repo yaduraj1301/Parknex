@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Users,
   Car,
   Phone,
-  Mail,
   ShieldCheck,
   Building2,
   CalendarCheck,
 } from "lucide-react";
 import { Table } from "../../Components/Table/table";
+import { EmployeePopup } from "../../Components/EmployeePopUP/EmployeePopup";
 import "./EmployeeManagement.css";
 
 export function EmployeeManagement() {
   const columns = [
-    { key: "employeeId", label: "EMPLOYEE ID" },
-    { key: "name", label: "NAME" },
+    { key: "employeeId", label: "EMPLOYEE ID", sortable: true },
+    { key: "name", label: "NAME", sortable: true },
     { key: "email", label: "EMAIL" },
     { key: "building", label: "BUILDING" },
     { key: "phone", label: "PHONE" },
-    { key: "status", label: "STATUS" },
+    { key: "vehicle_no", label: "VEHICLE NO" },
   ];
 
   const data = Array.from({ length: 20 }, (_, i) => ({
@@ -27,7 +27,7 @@ export function EmployeeManagement() {
     email: "john@example.com",
     building: "Thejaswini, Trivandrum",
     phone: "+1234567890",
-    status: "Active",
+    vehicle_no: "KL 08 Q 3738",
     vehicles: [
       "KL 08 Q 3738 Maruti 800 White",
       "KL 08 Q 4738 Honda City Black",
@@ -38,6 +38,17 @@ export function EmployeeManagement() {
 
   const [file, setFile] = useState<File | null>(null);
   const [selectedEmployee, setSelectedEmployee] = useState<any>(null);
+  const [showAddEmployeeModal, setShowAddEmployeeModal] = useState(false);
+
+  const handleAddEmployeeClick = () => {
+    setShowAddEmployeeModal(true);
+  };
+
+  const handleAddEmployeeSave = (newEmployee: any) => {
+    // Normally, you'd update API or state here
+    console.log("New Employee Added:", newEmployee);
+    setShowAddEmployeeModal(false);
+  };
 
   const handleRowClick = (rowData: any) => {
     setSelectedEmployee(rowData);
@@ -59,8 +70,9 @@ export function EmployeeManagement() {
           rowsPerPage={10}
           showAddButton={true}
           addButtonLabel="+ Add Employee"
-          onAddClick={() => console.log("Add employee clicked")}
+          onAddClick={handleAddEmployeeClick}
           onRowClick={handleRowClick}
+          showFilter
         />
       </div>
 
@@ -94,7 +106,6 @@ export function EmployeeManagement() {
               </p>
             )}
 
-            {/* Hidden file input triggered by the label */}
             <input
               id="file-upload"
               type="file"
@@ -146,7 +157,7 @@ export function EmployeeManagement() {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Employee Detail Modal */}
       {selectedEmployee && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -199,7 +210,7 @@ export function EmployeeManagement() {
                 <CalendarCheck size={18} /> Authorization Details
               </h3>
               <p>
-                <span className="medium">Email:</span>{" "}
+                <span className="medium">Authorized On:</span>{" "}
                 {selectedEmployee.authorized}
               </p>
             </div>
@@ -214,6 +225,14 @@ export function EmployeeManagement() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* ✅ Add Employee Popup */}
+      {showAddEmployeeModal && (
+        <EmployeePopup
+          onClose={() => setShowAddEmployeeModal(false)}
+          onSave={handleAddEmployeeSave}
+        />
       )}
     </div>
   );

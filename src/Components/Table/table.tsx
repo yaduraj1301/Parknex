@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { ChevronDown } from "lucide-react";
 import "./table.css";
 
 export interface Column {
@@ -18,7 +19,7 @@ interface ReusableTableProps {
   addButtonLabel?: string;
   onAddClick?: () => void;
   onRowClick?: (row: Record<string, any>) => void;
-  showFilter?: boolean; // 👈 Added prop
+  showFilter?: boolean;
 }
 
 export const Table: React.FC<ReusableTableProps> = ({
@@ -32,7 +33,7 @@ export const Table: React.FC<ReusableTableProps> = ({
   addButtonLabel = "+ Add",
   onAddClick,
   onRowClick,
-  showFilter = false, // 👈 Default false
+  showFilter = false,
 }) => {
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<string>("");
@@ -109,31 +110,42 @@ export const Table: React.FC<ReusableTableProps> = ({
             }}
           />
 
-          <select onChange={(e) => setSortKey(e.target.value)} value={sortKey}>
-            <option value="">Sort By</option>
-            {columns
-              .filter((col) => col.sortable)
-              .map((col) => (
-                <option key={col.key} value={col.key}>
-                  {col.label}
-                </option>
-              ))}
-          </select>
-
-          {showFilter && (
+          {/* Sort Dropdown with Icon */}
+          <div className="select-wrapper">
             <select
-              onChange={(e) => {
-                setFilterKey(e.target.value);
-                setCurrentPage(1);
-              }}
-              value={filterKey}
+              onChange={(e) => setSortKey(e.target.value)}
+              value={sortKey}
             >
-              {filterOptions.map((opt) => (
-                <option key={opt} value={opt}>
-                  {opt}
-                </option>
-              ))}
+              <option value="">Sort By</option>
+              {columns
+                .filter((col) => col.sortable)
+                .map((col) => (
+                  <option key={col.key} value={col.key}>
+                    {col.label}
+                  </option>
+                ))}
             </select>
+            <ChevronDown className="select-icon" size={18} />
+          </div>
+
+          {/* Filter Dropdown with Icon */}
+          {showFilter && (
+            <div className="select-wrapper">
+              <select
+                onChange={(e) => {
+                  setFilterKey(e.target.value);
+                  setCurrentPage(1);
+                }}
+                value={filterKey}
+              >
+                {filterOptions.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="select-icon" size={18} />
+            </div>
           )}
 
           {showAddButton && (
