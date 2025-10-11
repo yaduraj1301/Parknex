@@ -179,9 +179,9 @@ export function EmployeeManagement() {
             </div>
 
             <div className="modal-section">
-              <h3>
-                <Car size={18} /> Vehicle Information
-              </h3>
+              <div className="pop-h">
+                <Car size={18} /> VEHICLE INFORMATION
+              </div>
               <ul>
                 {selectedEmployee.vehicles.map((v: string, idx: number) => (
                   <li key={idx}>{v}</li>
@@ -192,9 +192,9 @@ export function EmployeeManagement() {
             <hr className="light-divider" />
 
             <div className="modal-section">
-              <h3>
-                <Phone size={18} /> Contact Information
-              </h3>
+              <div className="pop-h">
+                <Phone size={18} /> CONTACT INFORMATION
+              </div>
               <p>
                 <span className="medium">Phone:</span> {selectedEmployee.phone}
               </p>
@@ -206,9 +206,9 @@ export function EmployeeManagement() {
             <hr className="light-divider" />
 
             <div className="modal-section">
-              <h3>
-                <CalendarCheck size={18} /> Authorization Details
-              </h3>
+              <div className="pop-h">
+                <CalendarCheck size={18} /> AUTHORIZATION DETAILS
+              </div>
               <p>
                 <span className="medium">Authorized On:</span>{" "}
                 {selectedEmployee.authorized}
@@ -218,9 +218,9 @@ export function EmployeeManagement() {
             <hr className="light-divider" />
 
             <div className="modal-section">
-              <h3>
-                <Building2 size={18} /> Location Information
-              </h3>
+              <div className="pop-h">
+                <Building2 size={18} /> LOCATION INFORMATION
+              </div>
               <p>{selectedEmployee.building}</p>
             </div>
           </div>
