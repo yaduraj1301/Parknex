@@ -86,7 +86,7 @@
 
     /* Fine-tune these values to perfectly align with the table's internal controls */
     top: 51.5px; 
-    left: 305px; 
+    left: 327px; 
 }
 
 /* Find this existing rule in your AllBookings.css */
@@ -100,7 +100,7 @@
     border: 1px solid #d1d5db;
     font-size: 13px;
     color: #374151;
-    background-color: #f9fafb;
+    background-color: #ffffff;
     cursor: pointer;
     
     /* Add the custom arrow styles here as well */

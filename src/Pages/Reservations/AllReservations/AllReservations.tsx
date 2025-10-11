@@ -1,21 +1,24 @@
-import { useState, useMemo } from "react"; // Import useMemo
+import { useState, useMemo } from "react";
 import { SlCalender } from "react-icons/sl";
-import "./AllBookings.css";
+import "./AllReservations.css";
 import { Table, type Column } from "../../../Components/Table/table";
+import { UpcomingBookingCard, type Booking } from "./UpcomingBookingCard/UpcomingBookingCard"; // Import card
+import { Modal } from "../../../Components/Modal/Modal"; // Import modal
 
-export function AllBookings() {
-    // State for our NEW custom filters
+export function AllReservations() {
+    // State for modal
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
+
+    // ... your existing filter state and logic
     const [statusFilter, setStatusFilter] = useState('all');
     const [dateFilter, setDateFilter] = useState('today');
-
     const bookingColumns: Column[] = [
-        { key: 'bookingId', label: 'Booking Id' },
-        { key: 'vehicleNo', label: 'Vehicle No.' },
-        { key: 'client', label: 'Client/Employee' },
-        { key: 'slotNo', label: 'Slot No.' },
-        { key: 'status', label: 'Status' },
-        { key: 'dateTime', label: 'Date & Time', sortable: true }
+        { key: 'bookingId', label: 'Booking Id' }, { key: 'vehicleNo', label: 'Vehicle No.' },
+        { key: 'client', label: 'Client/Employee' }, { key: 'slotNo', label: 'Slot No.' },
+        { key: 'status', label: 'Status' }, { key: 'dateTime', label: 'Date & Time', sortable: true }
     ];
+    
 
     // This is the MASTER data list. It should not be modified.
     const masterBookingsData = useMemo(() => Array.from({ length: 20 }, (_, i) => ({
@@ -47,6 +50,29 @@ export function AllBookings() {
         return data;
     }, [masterBookingsData, statusFilter, dateFilter]);
 
+
+    const upcomingBookingsData: Booking[] = [
+        { id: '#BK124', date: '2024-01-15', startTime: '09:00 AM', vehicleNo: 'ABC-789', slotNo: 'C-305', duration: '09:00 AM - 05:00 PM', client: 'Emily Davis' },
+        { id: '#BK125', date: '2024-01-15', startTime: '10:00 AM', vehicleNo: 'XYZ-123', slotNo: 'A-112', duration: '10:00 AM - 01:00 PM', client: 'John Smith' },
+        { id: '#BK126', date: '2024-01-16', startTime: '09:30 AM', vehicleNo: 'MUM-456', slotNo: 'B-201', duration: '09:30 AM - 06:00 PM', client: 'Alex Hales' },
+        { id: '#BK127', date: '2024-01-16', startTime: '11:00 AM', vehicleNo: 'PRQ-789', slotNo: 'C-310', duration: '11:00 AM - 02:00 PM', client: 'Ben Stokes' },
+        { id: '#BK128', date: '2024-01-17', startTime: '01:00 PM', vehicleNo: 'COC-321', slotNo: 'A-104', duration: '01:00 PM - 05:00 PM', client: 'Ross Taylor' },
+    ];
+    
+    // Handlers for modal
+    const handleEditClick = (booking: Booking) => {
+        setSelectedBooking(booking);
+        setIsEditModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsEditModalOpen(false);
+        setSelectedBooking(null);
+    };
+
+    const handleDelete = (bookingId: string) => {
+        alert(`Delete functionality for booking ${bookingId} will be added later.`);
+    };
 
     return (
         <div className='all-bookings-page'>
@@ -86,7 +112,6 @@ export function AllBookings() {
                 </div>
 
                 <div className="upcoming-bookings-panel">
-                    {/* ... upcoming bookings content ... */}
                     <div className="upcoming-bookings-header">
                         <div className="header-icon-container">
                             <SlCalender />
@@ -97,10 +122,31 @@ export function AllBookings() {
                         </div>
                     </div>
                     <div className="upcoming-bookings-content">
-                        <p>Scrollable list of upcoming booking cards...</p>
+                        {upcomingBookingsData.map(booking => (
+                            <UpcomingBookingCard
+                                key={booking.id}
+                                booking={booking}
+                                onEdit={handleEditClick}
+                                onDelete={handleDelete}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
+
+            {/* Render the Modal conditionally */}
+            <Modal
+                isOpen={isEditModalOpen}
+                onClose={handleCloseModal}
+                title={`Edit Booking ${selectedBooking?.id || ''}`}
+            >
+                <div>
+                    <p>Here you can add form fields to edit details for <strong>{selectedBooking?.client}</strong>.</p>
+                    <br />
+                    <p>And below, the <strong>Slot Overview</strong> component will be rendered.</p>
+                    {/* <SlotVisualizer bookingDate={selectedBooking?.date} selectedSlot={selectedBooking?.slotNo} /> */}
+                </div>
+            </Modal>
         </div>
     );
 }

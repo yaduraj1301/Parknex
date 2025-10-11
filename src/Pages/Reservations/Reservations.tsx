@@ -2,13 +2,13 @@ import { useState } from "react";
 import "./Reservations.css";
 import { Tabs, type TabItem } from "../../Components/Tabs/Tabs";
 import { ReserveSlot } from "./ReserveSlot/ReserveSlot";
-import { AllBookings } from "./AllBookings/AllBookings";
+import { AllReservations } from "./AllReservations/AllReservations";
 import { MainHeader } from "../../Components/main-header/main-header";
 
 export function Reservations() {
     const tabItems: TabItem[] = [
         { label: "Reserve Slot", content: <ReserveSlot /> },
-        { label: "All Reservations", content: <AllBookings /> },
+        { label: "All Reservations", content: <AllReservations /> },
     ];
 
     // Entire reservation page depends on this(For both the tabs)
