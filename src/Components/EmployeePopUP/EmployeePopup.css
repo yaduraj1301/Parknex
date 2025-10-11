@@ -25,7 +25,7 @@
 }
 
 .popup-header h3 {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -108,7 +108,11 @@
 .save-btn:hover {
   background: #4d8ae6;
 }
-
+.pop-h {
+  font-weight: 550;
+  font-size: 15px;
+  padding-bottom: 5px;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
